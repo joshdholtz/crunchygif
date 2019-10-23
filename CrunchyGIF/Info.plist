@@ -22,6 +22,14 @@
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>Need</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>Need</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>Need</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Josh Holtz. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
