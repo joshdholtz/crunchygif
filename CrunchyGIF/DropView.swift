@@ -14,7 +14,12 @@ class DropView: NSView {
     let expectedExt = ["mov"]  //file extensions allowed for Drag&Drop (example: "jpg","png","docx", etc..)
     
     typealias OnDrop = (String) -> ()
+    typealias OnStart = () -> ()
+    typealias OnEnd = () -> ()
+    
     var onDrop: OnDrop?
+    var onStart: OnStart?
+    var onEnd: OnEnd?
     
     var fileToPaste: URL?
 
@@ -22,7 +27,7 @@ class DropView: NSView {
         super.init(coder: coder)
 
         self.wantsLayer = true
-        self.layer?.backgroundColor = NSColor.purple.cgColor
+        self.layer?.backgroundColor = NSColor.clear.cgColor
 
         registerForDraggedTypes([NSPasteboard.PasteboardType.URL, NSPasteboard.PasteboardType.fileURL])
     }
@@ -33,8 +38,9 @@ class DropView: NSView {
     }
 
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        self.onStart?()
         if checkExtension(sender) == true {
-            self.layer?.backgroundColor = NSColor.darkGray.cgColor
+            self.layer?.backgroundColor = NSColor.clear.cgColor
             return .copy
         } else {
             return NSDragOperation()
@@ -57,10 +63,12 @@ class DropView: NSView {
 
     override func draggingExited(_ sender: NSDraggingInfo?) {
         self.layer?.backgroundColor = NSColor.clear.cgColor
+        self.onEnd?()
     }
 
     override func draggingEnded(_ sender: NSDraggingInfo) {
         self.layer?.backgroundColor = NSColor.clear.cgColor
+        self.onEnd?()
     }
 
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {

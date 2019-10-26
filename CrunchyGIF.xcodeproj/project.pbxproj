@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034F78D62364CC1D0074218D /* AspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F78D52364CC1D0074218D /* AspectFillImageView.swift */; };
 		036371132363DA4800858441 /* GifCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036371112363DA4800858441 /* GifCollectionViewItem.swift */; };
 		036371142363DA4800858441 /* GifCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036371122363DA4800858441 /* GifCollectionViewItem.xib */; };
 		036371162363E3E300858441 /* DragImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036371152363E3E300858441 /* DragImageView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		034F78D52364CC1D0074218D /* AspectFillImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFillImageView.swift; sourceTree = "<group>"; };
 		036371112363DA4800858441 /* GifCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewItem.swift; sourceTree = "<group>"; };
 		036371122363DA4800858441 /* GifCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCollectionViewItem.xib; sourceTree = "<group>"; };
 		036371152363E3E300858441 /* DragImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				036371112363DA4800858441 /* GifCollectionViewItem.swift */,
 				036371122363DA4800858441 /* GifCollectionViewItem.xib */,
 				036371152363E3E300858441 /* DragImageView.swift */,
+				034F78D52364CC1D0074218D /* AspectFillImageView.swift */,
 			);
 			path = CrunchyGIF;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A936AF235DD8A7001D3221 /* ViewController.swift in Sources */,
+				034F78D62364CC1D0074218D /* AspectFillImageView.swift in Sources */,
 				03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */,
 				03A936AD235DD8A7001D3221 /* AppDelegate.swift in Sources */,
 				039F3F1823606C6900BBD069 /* GifTools.swift in Sources */,

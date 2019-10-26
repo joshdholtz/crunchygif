@@ -10,7 +10,7 @@ import Cocoa
 
 struct GifFile {
     let modifiedAt: Date
-    let thumbnail: NSImage
+    let thumbnail: NSImage?
     let fileName: String
     let url: URL
 }

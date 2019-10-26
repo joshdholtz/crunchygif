@@ -686,76 +686,107 @@
             <objects>
                 <viewController storyboardIdentifier="DashboardViewController" id="XfG-lQ-9wD" customClass="DashboardViewController" customModule="CrunchyGIF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="533" height="605"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="fKH-dF-AMH" customClass="DropView" customModule="CrunchyGIF" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="GNu-an-4hR">
+                                <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2FG-bD-8Fk">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                        <subviews>
-                                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JO-LG-F4x">
-                                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                                <clipView key="contentView" id="20D-hR-SLV">
-                                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <collectionView id="5mO-O0-NX5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="478" height="158"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="ouX-0c-wPh">
-                                                                <size key="itemSize" width="50" height="50"/>
-                                                            </collectionViewFlowLayout>
-                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            <connections>
-                                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="z1K-9h-7p0"/>
-                                                            </connections>
-                                                        </collectionView>
-                                                    </subviews>
-                                                </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="nNC-JR-mDo">
-                                                    <rect key="frame" x="1" y="253" width="478" height="16"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FrM-Qc-ao6">
-                                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                            </scrollView>
-                                        </subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Boa-8i-Nrz" customClass="AspectFillImageView" customModule="CrunchyGIF" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="crunchy_background" id="RmR-Pz-xvt"/>
+                                    </imageView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Q-Lr-iNu">
+                                        <rect key="frame" x="24" y="81" width="485" height="403"/>
                                         <constraints>
-                                            <constraint firstItem="2JO-LG-F4x" firstAttribute="top" secondItem="2FG-bD-8Fk" secondAttribute="top" id="5Im-bu-Miw"/>
-                                            <constraint firstAttribute="bottom" secondItem="2JO-LG-F4x" secondAttribute="bottom" id="6rG-hx-5KL"/>
-                                            <constraint firstAttribute="trailing" secondItem="2JO-LG-F4x" secondAttribute="trailing" id="DL0-8b-oaw"/>
-                                            <constraint firstItem="2JO-LG-F4x" firstAttribute="leading" secondItem="2FG-bD-8Fk" secondAttribute="leading" id="dJB-Ft-DCM"/>
+                                            <constraint firstAttribute="width" constant="485" id="556-0o-uaC"/>
+                                            <constraint firstAttribute="height" constant="403" id="ykb-EM-ITy"/>
                                         </constraints>
-                                    </customView>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="crunchy_logo" id="b7h-em-raB"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="2FG-bD-8Fk" secondAttribute="trailing" id="MTw-ZH-AEH"/>
-                                    <constraint firstItem="2FG-bD-8Fk" firstAttribute="top" secondItem="fKH-dF-AMH" secondAttribute="top" id="PW7-mc-9yg"/>
-                                    <constraint firstItem="2FG-bD-8Fk" firstAttribute="leading" secondItem="fKH-dF-AMH" secondAttribute="leading" id="rmd-qC-Wcp"/>
-                                    <constraint firstAttribute="bottom" secondItem="2FG-bD-8Fk" secondAttribute="bottom" id="xho-Vp-SNd"/>
+                                    <constraint firstItem="Y0Q-Lr-iNu" firstAttribute="centerX" secondItem="GNu-an-4hR" secondAttribute="centerX" id="TJF-XL-l3h"/>
+                                    <constraint firstItem="Y0Q-Lr-iNu" firstAttribute="centerY" secondItem="GNu-an-4hR" secondAttribute="centerY" id="aQw-QH-PyU"/>
+                                </constraints>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-dF-AMH" customClass="DropView" customModule="CrunchyGIF" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="2FG-bD-8Fk">
+                                <rect key="frame" x="0.0" y="-40" width="533" height="605"/>
+                                <subviews>
+                                    <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JO-LG-F4x">
+                                        <rect key="frame" x="0.0" y="39" width="533" height="566"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <clipView key="contentView" ambiguous="YES" id="20D-hR-SLV">
+                                            <rect key="frame" x="1" y="1" width="531" height="564"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView ambiguous="YES" id="5mO-O0-NX5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="531" height="564"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="ouX-0c-wPh">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="XfG-lQ-9wD" id="z1K-9h-7p0"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="nNC-JR-mDo">
+                                            <rect key="frame" x="-100" y="-100" width="478" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="FrM-Qc-ao6">
+                                            <rect key="frame" x="516" y="1" width="16" height="564"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ybH-dc-GOj">
+                                <rect key="frame" x="0.0" y="1565" width="533" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6dO-7D-kxv"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="fKH-dF-AMH" secondAttribute="bottom" id="07w-fl-0xE"/>
-                            <constraint firstItem="fKH-dF-AMH" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Dpy-5b-u8J"/>
-                            <constraint firstAttribute="trailing" secondItem="fKH-dF-AMH" secondAttribute="trailing" id="Tbv-K8-F5d"/>
-                            <constraint firstItem="fKH-dF-AMH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="pMW-J2-7HL"/>
+                            <constraint firstAttribute="bottom" secondItem="2FG-bD-8Fk" secondAttribute="bottom" constant="-40" id="2Ml-Bc-tPw"/>
+                            <constraint firstItem="GNu-an-4hR" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="7Q4-ns-pbW"/>
+                            <constraint firstItem="ybH-dc-GOj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="RC7-4p-Pym"/>
+                            <constraint firstItem="2FG-bD-8Fk" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="SYC-q5-sPo"/>
+                            <constraint firstAttribute="trailing" secondItem="2FG-bD-8Fk" secondAttribute="trailing" id="cg9-uG-n1S"/>
+                            <constraint firstAttribute="trailing" secondItem="GNu-an-4hR" secondAttribute="trailing" id="dUA-S7-awT"/>
+                            <constraint firstItem="ybH-dc-GOj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="-1000" id="drC-5h-cde"/>
+                            <constraint firstAttribute="trailing" secondItem="ybH-dc-GOj" secondAttribute="trailing" id="fOi-h2-Gyn"/>
+                            <constraint firstItem="GNu-an-4hR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="hX2-Ig-Vjy"/>
+                            <constraint firstAttribute="bottom" secondItem="GNu-an-4hR" secondAttribute="bottom" id="vr6-nw-Aoi"/>
+                            <constraint firstItem="2FG-bD-8Fk" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="zcr-Tu-yCy"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="5mO-O0-NX5" id="Xzd-dy-tyn"/>
+                        <outlet property="contentView" destination="2FG-bD-8Fk" id="Q6u-6p-IyP"/>
+                        <outlet property="crunchBackgroundImageView" destination="Boa-8i-Nrz" id="6jR-NE-dBo"/>
+                        <outlet property="crunchLogoImageView" destination="Y0Q-Lr-iNu" id="hvo-rx-YGP"/>
                         <outlet property="dropView" destination="fKH-dF-AMH" id="eOg-6s-YP1"/>
-                        <outlet property="overView" destination="2FG-bD-8Fk" id="9TF-9a-owl"/>
+                        <outlet property="navigationBar" destination="ybH-dc-GOj" id="ZCk-qe-Rr9"/>
+                        <outlet property="overView" destination="GNu-an-4hR" id="mwf-yH-9NA"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="72.5" y="842.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="crunchy_background" width="532.5" height="1065"/>
+        <image name="crunchy_logo" width="512" height="512"/>
+    </resources>
 </document>
