@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -690,6 +691,53 @@
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="fKH-dF-AMH" customClass="DropView" customModule="CrunchyGIF" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2FG-bD-8Fk">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                        <subviews>
+                                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JO-LG-F4x">
+                                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                                <clipView key="contentView" id="20D-hR-SLV">
+                                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <collectionView id="5mO-O0-NX5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="478" height="158"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="ouX-0c-wPh">
+                                                                <size key="itemSize" width="50" height="50"/>
+                                                            </collectionViewFlowLayout>
+                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="z1K-9h-7p0"/>
+                                                            </connections>
+                                                        </collectionView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="nNC-JR-mDo">
+                                                    <rect key="frame" x="1" y="253" width="478" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FrM-Qc-ao6">
+                                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2JO-LG-F4x" firstAttribute="top" secondItem="2FG-bD-8Fk" secondAttribute="top" id="5Im-bu-Miw"/>
+                                            <constraint firstAttribute="bottom" secondItem="2JO-LG-F4x" secondAttribute="bottom" id="6rG-hx-5KL"/>
+                                            <constraint firstAttribute="trailing" secondItem="2JO-LG-F4x" secondAttribute="trailing" id="DL0-8b-oaw"/>
+                                            <constraint firstItem="2JO-LG-F4x" firstAttribute="leading" secondItem="2FG-bD-8Fk" secondAttribute="leading" id="dJB-Ft-DCM"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2FG-bD-8Fk" secondAttribute="trailing" id="MTw-ZH-AEH"/>
+                                    <constraint firstItem="2FG-bD-8Fk" firstAttribute="top" secondItem="fKH-dF-AMH" secondAttribute="top" id="PW7-mc-9yg"/>
+                                    <constraint firstItem="2FG-bD-8Fk" firstAttribute="leading" secondItem="fKH-dF-AMH" secondAttribute="leading" id="rmd-qC-Wcp"/>
+                                    <constraint firstAttribute="bottom" secondItem="2FG-bD-8Fk" secondAttribute="bottom" id="xho-Vp-SNd"/>
+                                </constraints>
                             </customView>
                         </subviews>
                         <constraints>
@@ -700,7 +748,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="5mO-O0-NX5" id="Xzd-dy-tyn"/>
                         <outlet property="dropView" destination="fKH-dF-AMH" id="eOg-6s-YP1"/>
+                        <outlet property="overView" destination="2FG-bD-8Fk" id="9TF-9a-owl"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036371132363DA4800858441 /* GifCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036371112363DA4800858441 /* GifCollectionViewItem.swift */; };
+		036371142363DA4800858441 /* GifCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036371122363DA4800858441 /* GifCollectionViewItem.xib */; };
+		036371162363E3E300858441 /* DragImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036371152363E3E300858441 /* DragImageView.swift */; };
 		039F3F1823606C6900BBD069 /* GifTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039F3F1723606C6900BBD069 /* GifTools.swift */; };
 		039F3F1A23606DBC00BBD069 /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039F3F1923606DBC00BBD069 /* DropView.swift */; };
 		03A936AD235DD8A7001D3221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936AC235DD8A7001D3221 /* AppDelegate.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		036371112363DA4800858441 /* GifCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewItem.swift; sourceTree = "<group>"; };
+		036371122363DA4800858441 /* GifCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCollectionViewItem.xib; sourceTree = "<group>"; };
+		036371152363E3E300858441 /* DragImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageView.swift; sourceTree = "<group>"; };
 		039F3F1723606C6900BBD069 /* GifTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifTools.swift; sourceTree = "<group>"; };
 		039F3F1923606DBC00BBD069 /* DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
 		03A936A9235DD8A7001D3221 /* CrunchyGIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrunchyGIF.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +120,9 @@
 				039F3F1723606C6900BBD069 /* GifTools.swift */,
 				039F3F1923606DBC00BBD069 /* DropView.swift */,
 				03A936DA235DDF06001D3221 /* ffmpeg */,
+				036371112363DA4800858441 /* GifCollectionViewItem.swift */,
+				036371122363DA4800858441 /* GifCollectionViewItem.xib */,
+				036371152363E3E300858441 /* DragImageView.swift */,
 			);
 			path = CrunchyGIF;
 			sourceTree = "<group>";
@@ -242,6 +251,7 @@
 			files = (
 				03A936B1235DD8A8001D3221 /* Assets.xcassets in Resources */,
 				03A936B4235DD8A8001D3221 /* Main.storyboard in Resources */,
+				036371142363DA4800858441 /* GifCollectionViewItem.xib in Resources */,
 				03A936DB235DDF06001D3221 /* ffmpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +281,8 @@
 				03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */,
 				03A936AD235DD8A7001D3221 /* AppDelegate.swift in Sources */,
 				039F3F1823606C6900BBD069 /* GifTools.swift in Sources */,
+				036371162363E3E300858441 /* DragImageView.swift in Sources */,
+				036371132363DA4800858441 /* GifCollectionViewItem.swift in Sources */,
 				039F3F1A23606DBC00BBD069 /* DropView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,7 +459,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -469,7 +481,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

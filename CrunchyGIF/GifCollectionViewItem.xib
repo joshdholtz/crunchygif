@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GifCollectionViewItem" customModule="CrunchyGIF" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="yYV-97-8rP" id="S1V-nO-cgK"/>
+                <outlet property="textField" destination="DGQ-uT-iWz" id="tgI-f1-4nh"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yYV-97-8rP" customClass="DragImageView" customModule="CrunchyGIF" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="30" width="480" height="242"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="EbJ-Up-sSf"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DGQ-uT-iWz">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="30"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" drawsBackground="YES" id="vNa-92-HFo">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="yYV-97-8rP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2Jp-Ry-dDz"/>
+                <constraint firstItem="yYV-97-8rP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="849-CW-6So"/>
+                <constraint firstItem="DGQ-uT-iWz" firstAttribute="top" secondItem="yYV-97-8rP" secondAttribute="bottom" id="YOX-fM-jso"/>
+                <constraint firstAttribute="bottom" secondItem="DGQ-uT-iWz" secondAttribute="bottom" id="bZV-Tj-Djv"/>
+                <constraint firstItem="DGQ-uT-iWz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hpY-C1-P4C"/>
+                <constraint firstAttribute="trailing" secondItem="DGQ-uT-iWz" secondAttribute="trailing" id="kPY-fG-YgX"/>
+                <constraint firstAttribute="bottom" secondItem="yYV-97-8rP" secondAttribute="bottom" constant="30" id="xKo-Pq-9RK"/>
+                <constraint firstAttribute="trailing" secondItem="yYV-97-8rP" secondAttribute="trailing" id="yIM-EN-t2M"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
+        </customView>
+        <collectionViewItem id="pdW-3S-XiJ" customClass="GifCollectionViewItem" customModule="CrunchyGIF" customModuleProvider="target"/>
+    </objects>
+</document>
