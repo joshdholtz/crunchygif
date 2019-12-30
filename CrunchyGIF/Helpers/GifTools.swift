@@ -8,23 +8,13 @@
 
 import Cocoa
 
-class GifTools {
+struct GifTools {
 
     // You can also intercept console output from the process or interrupt the process when problem occurred.
     // https://crowjdh.blogspot.com/2017/05/use-ffmpeg-in-xcodefor-macos.html
     static func createFFMPEGProcess(arguments: [String], callback: @escaping (Bool) -> Void) -> (Process, DispatchWorkItem)? {
         
-        guard let bundleURL = Bundle.main.url(forResource: "FFMPEG", withExtension: "bundle") else {
-            print("Cannot find bundle")
-            return nil
-
-        }
-        guard let bundle = Bundle(url: bundleURL) else {
-            print("Cannot find bundle from url")
-            return nil
-        }
-        
-        guard let launchPath = bundle.path(forResource: "ffmpeg", ofType: "") else {
+        guard let launchPath = Bundle.main.path(forResource: "ffmpeg", ofType: "") else {
             print("Cannot find ffmpeg")
             return nil
         }

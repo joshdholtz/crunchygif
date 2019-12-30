@@ -139,6 +139,11 @@ class DashboardViewController: NSViewController {
         isDropping = true
         startImageRotate()
         
+        // Filter
+        let filter = "fps=15,scale=800:-1:flags=lanczos"
+        
+        // Path stuff
+        
         let path = URL(fileURLWithPath: path)
         let fileNameAndExtension = path.lastPathComponent.replacingOccurrences(of: " ", with: "_")
         let fileExtension = path.pathExtension
@@ -157,7 +162,7 @@ class DashboardViewController: NSViewController {
         do {
             try FileManager.default.copyItem(at: path, to: pathIn)
             
-            toGif(pathIn: pathIn, pathOut: pathOut) { [weak self] in
+            toGif(filter: filter, pathIn: pathIn, pathOut: pathOut) { [weak self] in
                 try? FileManager.default.removeItem(at: pathIn)
                 self?.dropView.fileToPaste = pathOut
                 
@@ -165,7 +170,6 @@ class DashboardViewController: NSViewController {
                     self?.isDropping = false
                     self?.reloadImages()
                 }
-//                try! FileManager.default.copyItem(at: pathOut, to: pathFinal)
             }
         } catch {
             print("Whoops: \(error)")
@@ -267,17 +271,14 @@ extension NSView {
 }
 
 extension DashboardViewController : NSCollectionViewDataSource {
-    // 1
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
     }
 
-    // 2
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return gifFiles.count
     }
 
-    // 3
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
 
         // 4
@@ -292,30 +293,45 @@ extension DashboardViewController : NSCollectionViewDataSource {
 }
 
 extension DashboardViewController {
-    func toGif(pathIn: URL, pathOut: URL, done: @escaping () -> ()) {
-        // ffmpeg -i yesbuddy.mov -pix_fmt rgb24 output.gif
+    func toGif(filter: String, pathIn: URL, pathOut: URL, done: @escaping () -> ()) {
+        let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        let tempPath = cachesPath.appendingPathComponent("tmp")
         
-        // ffmpeg -ss 00:00:00.000 -i yesbuddy.mov -pix_fmt rgb24 -r 10 -s 320x240 -t 00:00:10.000 output.gif
+        try? FileManager.default.createDirectory(at: tempPath, withIntermediateDirectories: true, attributes: nil)
 
-        // Shrink with image magic
-        // convert -layers Optimize output.gif output_optimized.gif
-
-        // add a filename
-//        let fileUrl = documentsUrl.URLByAppendingPathComponent("foo.txt")
-
-        print("Lets start to gif")
+        let paletteTemp = tempPath.appendingPathComponent("palette.png")
         
-        let arguments = [
+        // https://cassidy.codes/blog/2017/04/25/ffmpeg-frames-to-gif-optimization/
+        
+        let argumentsPalette = [
+            "-v",
+            "warning",
             "-i",
             pathIn.absoluteString,
-            "-pix_fmt",
-            "rgb24",
+            "-vf",
+            "\(filter),palettegen=stats_mode=diff",
+            "-y",
+            paletteTemp.absoluteString
+        ]
+        
+        let argumentsWithPalette = [
+            "-i",
+            pathIn.absoluteString,
+            "-i",
+            paletteTemp.absoluteString,
+            "-lavfi",
+            "\(filter),paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle",
+            "-y",
             pathOut.absoluteString
         ]
         
-        processMeta = GifTools.createFFMPEGProcess(arguments: arguments) { (terminated) in
-            print("terminated: \(terminated)")
-            done()
+        processMeta = GifTools.createFFMPEGProcess(arguments: argumentsPalette) { [unowned self] (terminated) in
+            print("terminated1: \(terminated)")
+            
+            self.processMeta = GifTools.createFFMPEGProcess(arguments: argumentsWithPalette) { (terminated) in
+                print("terminated2: \(terminated)")
+                done()
+            }
         }
     }
 }
@@ -323,11 +339,8 @@ extension DashboardViewController {
 extension DashboardViewController {
     // MARK: Storyboard instantiation
     static func freshController() -> DashboardViewController {
-        //1.
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        //2.
         let identifier = NSStoryboard.SceneIdentifier("DashboardViewController")
-        //3.
         guard let viewcontroller = storyboard.instantiateController(withIdentifier: identifier) as? DashboardViewController else {
             fatalError("Why cant i find DashboardViewController? - Check Main.storyboard")
         }
