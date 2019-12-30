@@ -750,7 +750,21 @@
                                 </subviews>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ybH-dc-GOj">
-                                <rect key="frame" x="0.0" y="1565" width="533" height="40"/>
+                                <rect key="frame" x="0.0" y="565" width="533" height="40"/>
+                                <subviews>
+                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vYv-93-PJx">
+                                        <rect key="frame" x="503" y="9" width="17" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Gear" imagePosition="only" alignment="center" transparent="YES" inset="2" id="boF-Qj-3R9">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <action selector="onClickSettingsWithSender:" target="XfG-lQ-9wD" id="Okp-bF-0Cw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6dO-7D-kxv"/>
                                 </constraints>
@@ -763,7 +777,7 @@
                             <constraint firstItem="2FG-bD-8Fk" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="SYC-q5-sPo"/>
                             <constraint firstAttribute="trailing" secondItem="2FG-bD-8Fk" secondAttribute="trailing" id="cg9-uG-n1S"/>
                             <constraint firstAttribute="trailing" secondItem="GNu-an-4hR" secondAttribute="trailing" id="dUA-S7-awT"/>
-                            <constraint firstItem="ybH-dc-GOj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="-1000" id="drC-5h-cde"/>
+                            <constraint firstItem="ybH-dc-GOj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="drC-5h-cde"/>
                             <constraint firstAttribute="trailing" secondItem="ybH-dc-GOj" secondAttribute="trailing" id="fOi-h2-Gyn"/>
                             <constraint firstItem="GNu-an-4hR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="hX2-Ig-Vjy"/>
                             <constraint firstAttribute="bottom" secondItem="GNu-an-4hR" secondAttribute="bottom" id="vr6-nw-Aoi"/>
@@ -778,6 +792,7 @@
                         <outlet property="dropView" destination="fKH-dF-AMH" id="eOg-6s-YP1"/>
                         <outlet property="navigationBar" destination="ybH-dc-GOj" id="ZCk-qe-Rr9"/>
                         <outlet property="overView" destination="GNu-an-4hR" id="mwf-yH-9NA"/>
+                        <outlet property="settingsButton" destination="vYv-93-PJx" id="8oz-WW-U6H"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -786,6 +801,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Gear" width="20" height="20"/>
         <image name="crunchy_background" width="532.5" height="1065"/>
         <image name="crunchy_logo" width="512" height="512"/>
     </resources>

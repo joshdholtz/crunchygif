@@ -18,6 +18,8 @@ class DashboardViewController: NSViewController {
     @IBOutlet var crunchBackgroundImageView: NSImageView!
     @IBOutlet var crunchLogoImageView: NSImageView!
     
+    @IBOutlet var settingsButton: NSButton!
+    
     @IBOutlet weak var collectionView: NSCollectionView!
     
     var isDropping = false
@@ -29,6 +31,14 @@ class DashboardViewController: NSViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        
+        settingsButton.appearance = NSAppearance.current
+        settingsButton.contentTintColor = NSColor.lightGray
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Delete All Gifs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit(_:)), keyEquivalent: "P"))
+        settingsButton.menu = menu
         
         navigationBar.wantsLayer = true
         navigationBar.layer?.backgroundColor = NSColor.darkGray.cgColor
@@ -137,7 +147,7 @@ class DashboardViewController: NSViewController {
         let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
         
         let timestamp = Int(Date().timeIntervalSince1970)
-        let timestampPath = cachesPath.appendingPathComponent("\(timestamp)")
+        let timestampPath = cachesPath.appendingPathComponent("gifs").appendingPathComponent("\(timestamp)")
         
         try? FileManager.default.createDirectory(at: timestampPath, withIntermediateDirectories: true, attributes: nil)
         
@@ -206,6 +216,28 @@ class DashboardViewController: NSViewController {
             
             
         }
+    }
+    
+    @IBAction func onClickSettings(sender: NSView) {
+        if let event = NSApplication.shared.currentEvent, let menu = sender.menu {
+            NSMenu.popUpContextMenu(menu, with: event, for: sender)
+        }
+    }
+    
+    @objc func deleteAllGifs(_ sender: Any?) {
+        DispatchQueue.init(label: "background").async { [weak self] in
+            let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            let gifsPath = cachesPath.appendingPathComponent("gifs")
+            try? FileManager.default.removeItem(at: gifsPath)
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.reloadImages()
+            }
+        }
+    }
+    
+    @objc func quit(_ sender: Any?) {
+        NSApplication.shared.terminate(nil)
     }
 }
 

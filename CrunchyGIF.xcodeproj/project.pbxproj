@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		034F78D62364CC1D0074218D /* AspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F78D52364CC1D0074218D /* AspectFillImageView.swift */; };
+		034F7918236642EC0074218D /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = 03A936DA235DDF06001D3221 /* ffmpeg */; };
+		034F791A236644780074218D /* ffmpeg.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 034F7919236644780074218D /* ffmpeg.entitlements */; };
 		036371132363DA4800858441 /* GifCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036371112363DA4800858441 /* GifCollectionViewItem.swift */; };
 		036371142363DA4800858441 /* GifCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036371122363DA4800858441 /* GifCollectionViewItem.xib */; };
 		036371162363E3E300858441 /* DragImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036371152363E3E300858441 /* DragImageView.swift */; };
@@ -20,7 +22,6 @@
 		03A936C0235DD8A8001D3221 /* CrunchyGIFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936BF235DD8A8001D3221 /* CrunchyGIFTests.swift */; };
 		03A936CB235DD8A8001D3221 /* CrunchyGIFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936CA235DD8A8001D3221 /* CrunchyGIFUITests.swift */; };
 		03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936D8235DDB4B001D3221 /* DashboardViewController.swift */; };
-		03A936DB235DDF06001D3221 /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = 03A936DA235DDF06001D3221 /* ffmpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		034F78D52364CC1D0074218D /* AspectFillImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFillImageView.swift; sourceTree = "<group>"; };
+		034F7919236644780074218D /* ffmpeg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ffmpeg.entitlements; sourceTree = "<group>"; };
 		036371112363DA4800858441 /* GifCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewItem.swift; sourceTree = "<group>"; };
 		036371122363DA4800858441 /* GifCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCollectionViewItem.xib; sourceTree = "<group>"; };
 		036371152363E3E300858441 /* DragImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		034F78FF236636E10074218D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		03A936A0235DD8A7001D3221 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +105,7 @@
 				03A936BE235DD8A8001D3221 /* CrunchyGIFTests */,
 				03A936C9235DD8A8001D3221 /* CrunchyGIFUITests */,
 				03A936AA235DD8A7001D3221 /* Products */,
+				034F78FF236636E10074218D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +128,7 @@
 				03A936B2235DD8A8001D3221 /* Main.storyboard */,
 				03A936B5235DD8A8001D3221 /* Info.plist */,
 				03A936B6235DD8A8001D3221 /* CrunchyGIF.entitlements */,
+				034F7919236644780074218D /* ffmpeg.entitlements */,
 				03A936D8235DDB4B001D3221 /* DashboardViewController.swift */,
 				039F3F1723606C6900BBD069 /* GifTools.swift */,
 				039F3F1923606DBC00BBD069 /* DropView.swift */,
@@ -158,6 +169,7 @@
 				03A936A5235DD8A7001D3221 /* Sources */,
 				03A936A6235DD8A7001D3221 /* Frameworks */,
 				03A936A7235DD8A7001D3221 /* Resources */,
+				034F791C236649410074218D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -252,10 +264,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034F7918236642EC0074218D /* ffmpeg in Resources */,
 				03A936B1235DD8A8001D3221 /* Assets.xcassets in Resources */,
 				03A936B4235DD8A8001D3221 /* Main.storyboard in Resources */,
+				034F791A236644780074218D /* ffmpeg.entitlements in Resources */,
 				036371142363DA4800858441 /* GifCollectionViewItem.xib in Resources */,
-				03A936DB235DDF06001D3221 /* ffmpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +287,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		034F791C236649410074218D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "codesign -f -s \"${CODE_SIGN_IDENTITY}\" --entitlements \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg.entitlements\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03A936A5235DD8A7001D3221 /* Sources */ = {
@@ -454,9 +487,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CrunchyGIF/CrunchyGIF.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1572200354;
 				DEVELOPMENT_TEAM = 972KS36P2U;
 				INFOPLIST_FILE = CrunchyGIF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -464,6 +498,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -476,19 +512,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CrunchyGIF/CrunchyGIF.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1572200354;
+				DEVELOPMENT_TEAM = 972KS36P2U;
 				INFOPLIST_FILE = CrunchyGIF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "CrunchyGIF AppStore";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
