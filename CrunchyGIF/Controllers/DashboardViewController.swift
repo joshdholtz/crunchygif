@@ -145,7 +145,7 @@ class DashboardViewController: NSViewController {
     
     func onDrop(path: String) {
         isDropping = true
-        self?.startImageRotate()
+        startImageRotate()
         
         // Filter
         let filter = "fps=15,scale=800:-1:flags=lanczos"
