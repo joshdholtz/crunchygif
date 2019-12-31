@@ -14,9 +14,9 @@ class DashboardViewController: NSViewController {
     @IBOutlet var navigationBar: NSView!
     @IBOutlet var dropView: DropView!
     @IBOutlet var contentView: NSView!
-    @IBOutlet var overView: NSView!
-    @IBOutlet var crunchBackgroundImageView: NSImageView!
-    @IBOutlet var crunchLogoImageView: NSImageView!
+    
+    @IBOutlet weak var progressView: NSView!
+    private var progressViewController: ProgressViewController!
     
     @IBOutlet var settingsButton: NSButton!
     
@@ -49,9 +49,6 @@ class DashboardViewController: NSViewController {
         contentView.wantsLayer = true
         contentView.layer?.backgroundColor = NSColor.darkGray.cgColor
         
-        overView.wantsLayer = true
-        overView.layer?.backgroundColor = NSColor.gray.cgColor
-        
         dropView.onStart = onDropStart
         dropView.onEnd = onDropEnd
         dropView.onDrop = onDrop
@@ -62,17 +59,25 @@ class DashboardViewController: NSViewController {
         reloadImages()
     }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "ProgressViewController":
+            progressViewController = segue.destinationController as? ProgressViewController
+        default:
+            break
+        }
+    }
+    
     func configureCollectionView() {
-        // 1
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         collectionView.collectionViewLayout = flowLayout
-        // 2
+        
         view.wantsLayer = true
-        // 3
+        
         collectionView.layer?.backgroundColor = NSColor.black.cgColor
         
         collectionView.register(GifCollectionViewItem.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "GifCollectionViewItem"))
@@ -140,13 +145,12 @@ class DashboardViewController: NSViewController {
     
     func onDrop(path: String) {
         isDropping = true
-        startImageRotate()
+        self?.startImageRotate()
         
         // Filter
         let filter = "fps=15,scale=800:-1:flags=lanczos"
         
         // Path stuff
-        
         let path = URL(fileURLWithPath: path)
         let fileNameAndExtension = path.lastPathComponent.replacingOccurrences(of: " ", with: "_")
         let fileExtension = path.pathExtension
@@ -171,6 +175,7 @@ class DashboardViewController: NSViewController {
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.isDropping = false
+                    self?.progressViewController.stop()
                     self?.reloadImages()
                 }
             }
@@ -180,48 +185,8 @@ class DashboardViewController: NSViewController {
     }
     
     func startImageRotate() {
-        if !isDropping {
-            contentView.isHidden = false
-            return
-        }
-        
-        crunchLogoImageView.setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 0.5))
-        
-        // Start animation
-        if crunchLogoImageView.layer?.animationKeys()?.count == 0 || crunchLogoImageView.layer?.animationKeys() == nil {
-            
-            CATransaction.begin()
-            
-            let rotate = CABasicAnimation(keyPath: "transform.rotation")
-            rotate.fromValue = 0
-            rotate.toValue = CGFloat(-1 * .pi * 2.0)
-            rotate.duration = 2
-            rotate.repeatCount = 1
-            
-            let scaleUp = CABasicAnimation(keyPath: "transform.scale")
-            scaleUp.fromValue = 1
-            scaleUp.toValue = 1.25
-            scaleUp.duration = 0.6
-            scaleUp.repeatCount = 1
-            scaleUp.beginTime = CACurrentMediaTime() + 1.9
-            
-            let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-            scaleDown.fromValue = 1.25
-            scaleDown.toValue = 1.0
-            scaleDown.duration = 0.6
-            scaleDown.repeatCount = 1
-            scaleDown.beginTime = CACurrentMediaTime() + 2.5
-            
-            CATransaction.setCompletionBlock { [weak self] in
-                self?.startImageRotate()
-            }
-
-            crunchLogoImageView.layer?.add(rotate, forKey: "rotation")
-            crunchLogoImageView.layer?.add(scaleUp, forKey: "scaleUp")
-            crunchLogoImageView.layer?.add(scaleDown, forKey: "scaleDown")
-            CATransaction.commit()
-            
-            
+        progressViewController.start { [unowned self] in
+            self.contentView.isHidden = false
         }
     }
     

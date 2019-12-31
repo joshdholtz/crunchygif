@@ -23,6 +23,7 @@
 		03A936C0235DD8A8001D3221 /* CrunchyGIFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936BF235DD8A8001D3221 /* CrunchyGIFTests.swift */; };
 		03A936CB235DD8A8001D3221 /* CrunchyGIFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936CA235DD8A8001D3221 /* CrunchyGIFUITests.swift */; };
 		03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936D8235DDB4B001D3221 /* DashboardViewController.swift */; };
+		03D33E3C23BB0014009D08CA /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E3B23BB0014009D08CA /* ProgressViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		03A936CC235DD8A8001D3221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03A936D8235DDB4B001D3221 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		03A936DA235DDF06001D3221 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
+		03D33E3B23BB0014009D08CA /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				03A936D8235DDB4B001D3221 /* DashboardViewController.swift */,
+				03D33E3B23BB0014009D08CA /* ProgressViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */,
 				03A936AD235DD8A7001D3221 /* AppDelegate.swift in Sources */,
 				039F3F1823606C6900BBD069 /* GifTools.swift in Sources */,
+				03D33E3C23BB0014009D08CA /* ProgressViewController.swift in Sources */,
 				036371162363E3E300858441 /* DragImageView.swift in Sources */,
 				036371132363DA4800858441 /* GifCollectionViewItem.swift in Sources */,
 				039F3F1A23606DBC00BBD069 /* DropView.swift in Sources */,

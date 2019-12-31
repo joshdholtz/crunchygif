@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -689,28 +689,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="533" height="605"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="GNu-an-4hR">
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLc-AF-Qif">
                                 <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
-                                <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Boa-8i-Nrz" customClass="AspectFillImageView" customModule="CrunchyGIF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="crunchy_background" id="RmR-Pz-xvt"/>
-                                    </imageView>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Q-Lr-iNu">
-                                        <rect key="frame" x="24" y="81" width="485" height="403"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="485" id="556-0o-uaC"/>
-                                            <constraint firstAttribute="height" constant="403" id="ykb-EM-ITy"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="crunchy_logo" id="b7h-em-raB"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Y0Q-Lr-iNu" firstAttribute="centerX" secondItem="GNu-an-4hR" secondAttribute="centerX" id="TJF-XL-l3h"/>
-                                    <constraint firstItem="Y0Q-Lr-iNu" firstAttribute="centerY" secondItem="GNu-an-4hR" secondAttribute="centerY" id="aQw-QH-PyU"/>
-                                </constraints>
-                            </customView>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <connections>
+                                    <segue destination="5ok-UP-2Bz" kind="embed" identifier="ProgressViewController" id="gXB-ZV-L9X"/>
+                                </connections>
+                            </containerView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-dF-AMH" customClass="DropView" customModule="CrunchyGIF" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -772,32 +757,78 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="2FG-bD-8Fk" secondAttribute="bottom" constant="-40" id="2Ml-Bc-tPw"/>
-                            <constraint firstItem="GNu-an-4hR" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="7Q4-ns-pbW"/>
                             <constraint firstItem="ybH-dc-GOj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="RC7-4p-Pym"/>
                             <constraint firstItem="2FG-bD-8Fk" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="SYC-q5-sPo"/>
                             <constraint firstAttribute="trailing" secondItem="2FG-bD-8Fk" secondAttribute="trailing" id="cg9-uG-n1S"/>
-                            <constraint firstAttribute="trailing" secondItem="GNu-an-4hR" secondAttribute="trailing" id="dUA-S7-awT"/>
                             <constraint firstItem="ybH-dc-GOj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="drC-5h-cde"/>
                             <constraint firstAttribute="trailing" secondItem="ybH-dc-GOj" secondAttribute="trailing" id="fOi-h2-Gyn"/>
-                            <constraint firstItem="GNu-an-4hR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="hX2-Ig-Vjy"/>
-                            <constraint firstAttribute="bottom" secondItem="GNu-an-4hR" secondAttribute="bottom" id="vr6-nw-Aoi"/>
                             <constraint firstItem="2FG-bD-8Fk" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="zcr-Tu-yCy"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="5mO-O0-NX5" id="Xzd-dy-tyn"/>
                         <outlet property="contentView" destination="2FG-bD-8Fk" id="Q6u-6p-IyP"/>
-                        <outlet property="crunchBackgroundImageView" destination="Boa-8i-Nrz" id="6jR-NE-dBo"/>
-                        <outlet property="crunchLogoImageView" destination="Y0Q-Lr-iNu" id="hvo-rx-YGP"/>
                         <outlet property="dropView" destination="fKH-dF-AMH" id="eOg-6s-YP1"/>
                         <outlet property="navigationBar" destination="ybH-dc-GOj" id="ZCk-qe-Rr9"/>
-                        <outlet property="overView" destination="GNu-an-4hR" id="mwf-yH-9NA"/>
+                        <outlet property="progressView" destination="xLc-AF-Qif" id="4Or-Bw-ipj"/>
                         <outlet property="settingsButton" destination="vYv-93-PJx" id="8oz-WW-U6H"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="72.5" y="842.5"/>
+        </scene>
+        <!--Progress View Controller-->
+        <scene sceneID="TpE-mA-MWo">
+            <objects>
+                <viewController id="5ok-UP-2Bz" customClass="ProgressViewController" customModule="CrunchyGIF" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="qdl-ki-itX">
+                        <rect key="frame" x="0.0" y="0.0" width="533" height="1065"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="amG-3e-CCH" customClass="AspectFillImageView" customModule="CrunchyGIF" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="533" height="1065"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="crunchy_background" id="xnC-eA-UbE"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2u-K1-aEy">
+                                <rect key="frame" x="65" y="317" width="404" height="431"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="431" id="dSX-Eq-kDE"/>
+                                    <constraint firstAttribute="width" constant="404" id="gzq-ZN-sDX"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="crunchy_logo" id="adI-qV-msF"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="amG-3e-CCH" firstAttribute="top" secondItem="qdl-ki-itX" secondAttribute="top" id="FLH-7Z-chJ"/>
+                            <constraint firstItem="c2u-K1-aEy" firstAttribute="centerY" secondItem="qdl-ki-itX" secondAttribute="centerY" id="JGg-WR-DTR"/>
+                            <constraint firstAttribute="trailing" secondItem="amG-3e-CCH" secondAttribute="trailing" id="TET-6k-dEG"/>
+                            <constraint firstAttribute="bottom" secondItem="amG-3e-CCH" secondAttribute="bottom" id="ht8-O1-hN6"/>
+                            <constraint firstItem="amG-3e-CCH" firstAttribute="leading" secondItem="qdl-ki-itX" secondAttribute="leading" id="ufy-rq-Ia1"/>
+                            <constraint firstItem="c2u-K1-aEy" firstAttribute="centerX" secondItem="qdl-ki-itX" secondAttribute="centerX" id="xf5-BS-0NH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="crunchBackgroundImageView" destination="amG-3e-CCH" id="Fwi-cI-naH"/>
+                        <outlet property="crunchLogoImageView" destination="c2u-K1-aEy" id="5L6-OB-0r1"/>
+                    </connections>
+                </viewController>
+                <customObject id="PFe-Wj-j5J" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="867"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tE6-gt-Y3x">
+            <objects>
+                <viewController id="gHn-kb-3gH" sceneMemberID="viewController">
+                    <view key="view" id="pp0-Rn-yMe">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="KjV-du-6s0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="52"/>
         </scene>
     </scenes>
     <resources>
