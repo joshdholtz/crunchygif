@@ -37,7 +37,10 @@ class DashboardViewController: NSViewController {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Delete All Gifs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit(_:)), keyEquivalent: "P"))
+        menu.addItem(NSMenuItem(title: "Donate", action: #selector(donate(_:)), keyEquivalent: "D"))
+        menu.addItem(NSMenuItem(title: "Contact", action: #selector(contact(_:)), keyEquivalent: "C"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit(_:)), keyEquivalent: "Q"))
         settingsButton.menu = menu
         
         navigationBar.wantsLayer = true
@@ -238,6 +241,14 @@ class DashboardViewController: NSViewController {
                 self?.reloadImages()
             }
         }
+    }
+    
+    @objc func donate(_ sender: Any?) {
+        NSWorkspace.shared.open(Constants.donateURL)
+    }
+    
+    @objc func contact(_ sender: Any?) {
+        NSWorkspace.shared.open(Constants.contactEmailURL)
     }
     
     @objc func quit(_ sender: Any?) {
