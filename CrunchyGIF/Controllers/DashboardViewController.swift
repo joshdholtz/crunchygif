@@ -12,7 +12,8 @@ import ImageIO
 class DashboardViewController: NSViewController {
     
     @IBOutlet var navigationBar: NSView!
-    @IBOutlet var dropView: DropView!
+    @IBOutlet var dropViewTop: DropView!
+    @IBOutlet var dropViewBottom: DropView!
     @IBOutlet var contentView: NSView!
     
     @IBOutlet weak var progressView: NSView!
@@ -49,9 +50,14 @@ class DashboardViewController: NSViewController {
         contentView.wantsLayer = true
         contentView.layer?.backgroundColor = NSColor.darkGray.cgColor
         
-        dropView.onStart = onDropStart
-        dropView.onEnd = onDropEnd
-        dropView.onDrop = onDrop
+        dropViewTop.wantsLayer = true
+        dropViewTop.layer?.backgroundColor = NSColor.red.cgColor
+        dropViewBottom.wantsLayer = true
+        dropViewBottom.layer?.backgroundColor = NSColor.blue.cgColor
+        
+        dropViewBottom.onStart = onDropStart
+        dropViewBottom.onEnd = onDropEnd
+        dropViewBottom.onDrop = onDrop
     }
     
     override func viewDidAppear() {
@@ -171,7 +177,7 @@ class DashboardViewController: NSViewController {
             
             toGif(filter: filter, pathIn: pathIn, pathOut: pathOut) { [weak self] in
                 try? FileManager.default.removeItem(at: pathIn)
-                self?.dropView.fileToPaste = pathOut
+                self?.dropViewBottom.fileToPaste = pathOut
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.isDropping = false

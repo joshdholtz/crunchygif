@@ -696,9 +696,14 @@
                                     <segue destination="5ok-UP-2Bz" kind="embed" identifier="ProgressViewController" id="gXB-ZV-L9X"/>
                                 </connections>
                             </containerView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-dF-AMH" customClass="DropView" customModule="CrunchyGIF" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="fKH-dF-AMH" customClass="DropView" customModule="CrunchyGIF" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="533" height="283"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="283" id="X8J-jA-JER"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="9lw-0p-xXL" customClass="DropView" customModule="CrunchyGIF" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="283" width="533" height="282"/>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="2FG-bD-8Fk">
                                 <rect key="frame" x="0.0" y="-40" width="533" height="605"/>
@@ -728,7 +733,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="FrM-Qc-ao6">
-                                            <rect key="frame" x="516" y="1" width="16" height="564"/>
+                                            <rect key="frame" x="516" y="1" width="16" height="281"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -756,19 +761,27 @@
                             </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9lw-0p-xXL" secondAttribute="trailing" id="1w9-0n-b6a"/>
                             <constraint firstAttribute="bottom" secondItem="2FG-bD-8Fk" secondAttribute="bottom" constant="-40" id="2Ml-Bc-tPw"/>
+                            <constraint firstItem="9lw-0p-xXL" firstAttribute="top" secondItem="ybH-dc-GOj" secondAttribute="bottom" id="8Cf-zU-GN1"/>
+                            <constraint firstItem="9lw-0p-xXL" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ABi-Vj-x1n"/>
+                            <constraint firstAttribute="trailing" secondItem="fKH-dF-AMH" secondAttribute="trailing" id="Bea-PD-ILz"/>
+                            <constraint firstAttribute="bottom" secondItem="fKH-dF-AMH" secondAttribute="bottom" id="QYX-VY-NlJ"/>
                             <constraint firstItem="ybH-dc-GOj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="RC7-4p-Pym"/>
                             <constraint firstItem="2FG-bD-8Fk" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="SYC-q5-sPo"/>
                             <constraint firstAttribute="trailing" secondItem="2FG-bD-8Fk" secondAttribute="trailing" id="cg9-uG-n1S"/>
                             <constraint firstItem="ybH-dc-GOj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="drC-5h-cde"/>
                             <constraint firstAttribute="trailing" secondItem="ybH-dc-GOj" secondAttribute="trailing" id="fOi-h2-Gyn"/>
+                            <constraint firstItem="fKH-dF-AMH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="gAY-VM-17v"/>
+                            <constraint firstItem="fKH-dF-AMH" firstAttribute="top" secondItem="9lw-0p-xXL" secondAttribute="bottom" id="tgF-56-zQs"/>
                             <constraint firstItem="2FG-bD-8Fk" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="zcr-Tu-yCy"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="5mO-O0-NX5" id="Xzd-dy-tyn"/>
                         <outlet property="contentView" destination="2FG-bD-8Fk" id="Q6u-6p-IyP"/>
-                        <outlet property="dropView" destination="fKH-dF-AMH" id="eOg-6s-YP1"/>
+                        <outlet property="dropViewBottom" destination="fKH-dF-AMH" id="EQz-FR-OVE"/>
+                        <outlet property="dropViewTop" destination="9lw-0p-xXL" id="lK0-Cs-nJZ"/>
                         <outlet property="navigationBar" destination="ybH-dc-GOj" id="ZCk-qe-Rr9"/>
                         <outlet property="progressView" destination="xLc-AF-Qif" id="4Or-Bw-ipj"/>
                         <outlet property="settingsButton" destination="vYv-93-PJx" id="8oz-WW-U6H"/>
