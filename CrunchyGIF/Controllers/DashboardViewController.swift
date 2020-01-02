@@ -17,7 +17,10 @@ class DashboardViewController: NSViewController {
     @IBOutlet var contentView: NSView!
     
     @IBOutlet weak var progressView: NSView!
+    @IBOutlet weak var settingsView: NSView!
+    
     private var progressViewController: ProgressViewController!
+    private var settingsViewController: SettingsViewController!
     
     @IBOutlet var settingsButton: NSButton!
     
@@ -27,15 +30,51 @@ class DashboardViewController: NSViewController {
     
     var gifFiles: [GifFile] = []
     var processMeta: (Process, DispatchWorkItem)?
+    
+    enum State {
+        case gifs, settings, progress
+    }
+    
+    var state: State = .gifs {
+        didSet {
+            switch state {
+            case .gifs:
+                contentView.isHidden = false
+                settingsView.isHidden = true
+                progressView.isHidden = true
+                
+                dropViewTop.isHidden = false
+                dropViewBottom.isHidden = false
+            case .settings:
+                contentView.isHidden = true
+                settingsView.isHidden = false
+                progressView.isHidden = true
+                
+                dropViewTop.isHidden = true
+                dropViewBottom.isHidden = true
+            case .progress:
+                contentView.isHidden = true
+                settingsView.isHidden = true
+                progressView.isHidden = false
+                
+                dropViewTop.isHidden = true
+                dropViewBottom.isHidden = true
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        state = .gifs
         
         configureCollectionView()
         
         settingsButton.appearance = NSAppearance.current
         settingsButton.contentTintColor = NSColor.lightGray
         let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Settings", action: #selector(settings(_:)), keyEquivalent: "P"))
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Delete All Gifs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Donate", action: #selector(donate(_:)), keyEquivalent: "D"))
@@ -69,6 +108,8 @@ class DashboardViewController: NSViewController {
         switch segue.identifier {
         case "ProgressViewController":
             progressViewController = segue.destinationController as? ProgressViewController
+        case "SettingsViewController":
+            settingsViewController = segue.destinationController as? SettingsViewController
         default:
             break
         }
@@ -140,12 +181,12 @@ class DashboardViewController: NSViewController {
     }
     
     func onDropStart() {
-        contentView.isHidden = true
+        state = .progress
     }
     
     func onDropEnd() {
         if !isDropping {
-            contentView.isHidden = false
+            state = .gifs
         }
     }
     
@@ -153,8 +194,10 @@ class DashboardViewController: NSViewController {
         isDropping = true
         startImageRotate()
         
+        let setting = Setting.fetch(kind: .defaults)
+        
         // Filter
-        let filter = "fps=15,scale=800:-1:flags=lanczos"
+        let filter = "fps=\(setting.fps),scale=\(setting.width):\(setting.height):flags=lanczos"
         
         // Path stuff
         let path = URL(fileURLWithPath: path)
@@ -192,13 +235,22 @@ class DashboardViewController: NSViewController {
     
     func startImageRotate() {
         progressViewController.start { [unowned self] in
-            self.contentView.isHidden = false
+            self.state = .gifs
         }
     }
     
     @IBAction func onClickSettings(sender: NSView) {
         if let event = NSApplication.shared.currentEvent, let menu = sender.menu {
             NSMenu.popUpContextMenu(menu, with: event, for: sender)
+        }
+    }
+    
+    @objc func settings(_ sender: Any?) {
+        settingsViewController.loadSetting(kind: .defaults)
+        state = .settings
+        
+        settingsViewController.onDone = { [unowned self] in
+            self.state = .gifs
         }
     }
     

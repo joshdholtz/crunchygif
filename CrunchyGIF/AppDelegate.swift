@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        if DragTools.checkExtension(sender) == true {
+        if DragTools.checkExtension(sender) {
             return .copy
         } else {
             return NSDragOperation()

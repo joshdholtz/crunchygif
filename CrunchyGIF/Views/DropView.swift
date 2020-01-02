@@ -36,7 +36,7 @@ class DropView: NSView {
 
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         self.onStart?()
-        if DragTools.checkExtension(sender) == true {
+        if DragTools.checkExtension(sender) {
 //            self.layer?.backgroundColor = NSColor.clear.cgColor
             return .copy
         } else {
