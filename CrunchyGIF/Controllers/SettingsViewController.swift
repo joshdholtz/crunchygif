@@ -131,6 +131,10 @@ class OnlyIntegerValueFormatter: NumberFormatter {
         if partialString.isEmpty {
             return true
         }
+        
+        if partialString == "-" {
+            return true
+        }
 
         // Optional: limit input length
         /*

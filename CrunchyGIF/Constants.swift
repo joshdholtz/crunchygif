@@ -9,6 +9,6 @@
 import Foundation
 
 struct Constants {
-    static let donateURL = URL(string: "https://crunchygif.com/donate")!
+    static let donateURL = URL(string: "https://www.joshholtz.com/crunchy-gif/")!
     static let contactEmailURL = URL(string: "mailto://me@joshholtz.com")!
 }

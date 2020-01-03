@@ -105,7 +105,7 @@ class DashboardViewController: NSViewController {
         settingsButton.appearance = NSAppearance.current
         settingsButton.contentTintColor = NSColor.lightGray
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Settings", action: #selector(settings(_:)), keyEquivalent: "P"))
+        menu.addItem(NSMenuItem(title: "Settings", action: #selector(settings(_:)), keyEquivalent: "S"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Delete All Gifs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
         menu.addItem(NSMenuItem.separator())
