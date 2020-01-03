@@ -10,16 +10,23 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    
 
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let popover = NSPopover()
+    
+    let dashboardViewController = DashboardViewController.freshController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
             button.action = #selector(togglePopover(_:))
         }
-        popover.contentViewController = DashboardViewController.freshController()
+        popover.contentViewController = dashboardViewController
+        
+        statusItem.button?.window?.registerForDraggedTypes([.fileURL])
+        statusItem.button?.window?.delegate = self
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -45,3 +52,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
+    func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        if DragTools.checkExtension(sender) {
+            return .copy
+        } else {
+            return NSDragOperation()
+        }
+    }
+
+    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        guard let path = DragTools.getFilePath(draggingInfo: sender) else {
+            return false
+        }
+
+        showPopover(sender: nil)
+        dashboardViewController.onDropStartDefaults()
+        dashboardViewController.onDropDefaults(path: path)
+
+        return true
+    }
+}
