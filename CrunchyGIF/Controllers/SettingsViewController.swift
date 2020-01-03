@@ -73,6 +73,9 @@ struct Setting {
 
 class SettingsViewController: NSViewController {
     
+    typealias OnBack = () -> Void
+    var onBack: OnBack?
+    
     typealias OnDone = () -> Void
     var onDone: OnDone?
     
@@ -100,11 +103,18 @@ class SettingsViewController: NSViewController {
     }
     
     @IBAction func onClickBack(_ sender: Any) {
-        onDone?()
+        onBack?()
     }
     
     func loadSetting(kind: Setting.Kind) {
         self.kind = kind
+        
+        switch kind {
+        case .custom:
+            saveButton.title = "Make GIF"
+        case .defaults:
+            saveButton.title = "Save"
+        }
         
         fpsTextView.integerValue = kind.fps
         widthTextView.integerValue = kind.width

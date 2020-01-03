@@ -353,7 +353,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#codesign -f -s \"${CODE_SIGN_IDENTITY}\" --entitlements \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg.entitlements\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg\"\n\ncodesign -f -s \"Apple Distribution: Josh Holtz (972KS36P2U)\" --entitlements \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg.entitlements\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg\"\n";
+			shellScript = "codesign -f -s \"${CODE_SIGN_IDENTITY}\" --entitlements \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg.entitlements\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg\"\n\n#codesign -f -s \"Apple Distribution: Josh Holtz (972KS36P2U)\" --entitlements \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg.entitlements\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}.app/Contents/Resources/ffmpeg\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

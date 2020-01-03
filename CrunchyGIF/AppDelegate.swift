@@ -67,8 +67,8 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
         }
 
         showPopover(sender: nil)
-        dashboardViewController.onDropStart()
-        dashboardViewController.onDrop(path: path)
+        dashboardViewController.onDropStartDefaults()
+        dashboardViewController.onDropDefaults(path: path)
 
         return true
     }

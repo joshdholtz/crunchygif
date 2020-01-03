@@ -19,6 +19,8 @@ class DashboardViewController: NSViewController {
     @IBOutlet weak var progressView: NSView!
     @IBOutlet weak var settingsView: NSView!
     
+    @IBOutlet weak var defaultsDescription: NSTextField!
+    
     private var progressViewController: ProgressViewController!
     private var settingsViewController: SettingsViewController!
     
@@ -32,7 +34,7 @@ class DashboardViewController: NSViewController {
     var processMeta: (Process, DispatchWorkItem)?
     
     enum State {
-        case gifs, settings, progress
+        case gifs, dropDefaults, dropCustom, settings, progress
     }
     
     var state: State = .gifs {
@@ -45,6 +47,36 @@ class DashboardViewController: NSViewController {
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
+            case .dropDefaults:
+                contentView.isHidden = true
+                settingsView.isHidden = true
+                progressView.isHidden = true
+                
+                dropViewTop.isHidden = false
+                dropViewBottom.isHidden = false
+                
+                dropViewTop.layer?.borderColor = NSColor.white.cgColor
+                dropViewTop.layer?.borderWidth = 0
+                dropViewBottom.layer?.borderColor = NSColor.white.cgColor
+                dropViewBottom.layer?.borderWidth = 1
+                
+                dropViewTop.alphaValue = 0.5
+                dropViewBottom.alphaValue = 1
+            case .dropCustom:
+                contentView.isHidden = true
+                settingsView.isHidden = true
+                progressView.isHidden = true
+                
+                dropViewTop.isHidden = false
+                dropViewBottom.isHidden = false
+                
+                dropViewTop.layer?.borderColor = NSColor.white.cgColor
+                dropViewTop.layer?.borderWidth = 1
+                dropViewBottom.layer?.borderColor = NSColor.white.cgColor
+                dropViewBottom.layer?.borderWidth = 0
+                
+                dropViewTop.alphaValue = 1
+                dropViewBottom.alphaValue = 0.5
             case .settings:
                 contentView.isHidden = true
                 settingsView.isHidden = false
@@ -90,13 +122,17 @@ class DashboardViewController: NSViewController {
         contentView.layer?.backgroundColor = NSColor.darkGray.cgColor
         
         dropViewTop.wantsLayer = true
-        dropViewTop.layer?.backgroundColor = NSColor.red.cgColor
+        dropViewTop.layer?.backgroundColor = NSColor.clear.cgColor
         dropViewBottom.wantsLayer = true
-        dropViewBottom.layer?.backgroundColor = NSColor.blue.cgColor
+        dropViewBottom.layer?.backgroundColor = NSColor.clear.cgColor
         
-        dropViewBottom.onStart = onDropStart
+        dropViewTop.onStart = onDropStartCustom
+        dropViewTop.onEnd = onDropEnd
+        dropViewTop.onDrop = onDropCustom
+        
+        dropViewBottom.onStart = onDropStartDefaults
         dropViewBottom.onEnd = onDropEnd
-        dropViewBottom.onDrop = onDrop
+        dropViewBottom.onDrop = onDropDefaults
     }
     
     override func viewDidAppear() {
@@ -180,8 +216,25 @@ class DashboardViewController: NSViewController {
         return NSImage(cgImage: image, size: CGSize(width: image.width, height: image.height))
     }
     
-    func onDropStart() {
-        state = .progress
+    func onDropStartDefaults() {
+        let setting = Setting.fetch(kind: .defaults)
+        
+        var parts = ["\(setting.fps) FPS"]
+        if setting.width > 0 {
+            parts.append("\(setting.width) width")
+        }
+        if setting.height > 0 {
+            parts.append("\(setting.height) height")
+        }
+        
+        let text = "Using \(parts.joined(separator: ", ")) from Settings"
+        defaultsDescription.stringValue = text
+        
+        state = .dropDefaults
+    }
+    
+    func onDropStartCustom() {
+        state = .dropCustom
     }
     
     func onDropEnd() {
@@ -190,11 +243,31 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    func onDrop(path: String) {
+    func onDropDefaults(path: String) {
+        let setting = Setting.fetch(kind: .defaults)
+        onDrop(path: path, setting: setting)
+    }
+    
+    func onDropCustom(path: String) {
+        settingsViewController.loadSetting(kind: .custom)
+        settingsViewController.onBack = { [unowned self] in
+            self.state = .gifs
+        }
+        settingsViewController.onDone = { [unowned self] in
+            let setting = Setting.fetch(kind: .custom)
+            self.onDrop(path: path, setting: setting)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            self.state = .settings
+        }
+    }
+    
+    func onDrop(path: String, setting: Setting) {
+        state = .progress
+        
         isDropping = true
         startImageRotate()
-        
-        let setting = Setting.fetch(kind: .defaults)
         
         // Filter
         let filter = "fps=\(setting.fps),scale=\(setting.width):\(setting.height):flags=lanczos"
@@ -247,11 +320,14 @@ class DashboardViewController: NSViewController {
     
     @objc func settings(_ sender: Any?) {
         settingsViewController.loadSetting(kind: .defaults)
-        state = .settings
-        
+        settingsViewController.onBack = { [unowned self] in
+            self.state = .gifs
+        }
         settingsViewController.onDone = { [unowned self] in
             self.state = .gifs
         }
+        
+        state = .settings
     }
     
     @objc func deleteAllGifs(_ sender: Any?) {
