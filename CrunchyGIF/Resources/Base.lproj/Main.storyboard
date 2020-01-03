@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -980,10 +980,24 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="det-GV-Pup">
+                                        <rect key="frame" x="11" y="9" width="464" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="fbm-JF-UMw"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Use Width or Height of -1 to keep aspect ration" id="lOV-hV-GfM">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="GKW-g2-jXs"/>
                                     <constraint firstAttribute="width" constant="493" id="Haw-fl-bcQ"/>
+                                    <constraint firstItem="det-GV-Pup" firstAttribute="leading" secondItem="WwD-Ni-RqB" secondAttribute="leading" constant="13" id="ksm-Lg-VfY"/>
+                                    <constraint firstAttribute="trailing" secondItem="det-GV-Pup" secondAttribute="trailing" constant="20" id="pRA-2g-K2l"/>
+                                    <constraint firstAttribute="bottom" secondItem="det-GV-Pup" secondAttribute="bottom" constant="9" id="uXP-rv-Sz9"/>
                                 </constraints>
                             </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxH-Qb-Oj0">
