@@ -109,7 +109,7 @@ class DashboardViewController: NSViewController {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Delete All Gifs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Donate", action: #selector(donate(_:)), keyEquivalent: "D"))
+        menu.addItem(NSMenuItem(title: "More Info", action: #selector(moreInfo(_:)), keyEquivalent: "I"))
         menu.addItem(NSMenuItem(title: "Contact", action: #selector(contact(_:)), keyEquivalent: "C"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit(_:)), keyEquivalent: "Q"))
@@ -342,8 +342,8 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    @objc func donate(_ sender: Any?) {
-        NSWorkspace.shared.open(Constants.donateURL)
+    @objc func moreInfo(_ sender: Any?) {
+        NSWorkspace.shared.open(Constants.website)
     }
     
     @objc func contact(_ sender: Any?) {
