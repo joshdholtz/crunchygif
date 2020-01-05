@@ -16,6 +16,8 @@ class DashboardViewController: NSViewController {
     @IBOutlet var dropViewBottom: DropView!
     @IBOutlet var contentView: NSView!
     
+    @IBOutlet weak var directionsLabel: NSTextField!
+    
     @IBOutlet weak var progressView: NSView!
     @IBOutlet weak var settingsView: NSView!
     
@@ -45,12 +47,16 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
+                directionsLabel.isHidden = !gifFiles.isEmpty
+                
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
             case .dropDefaults:
                 contentView.isHidden = true
                 settingsView.isHidden = true
                 progressView.isHidden = true
+                
+                directionsLabel.isHidden = true
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
@@ -67,6 +73,8 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
+                directionsLabel.isHidden = true
+                
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
                 
@@ -82,12 +90,16 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = false
                 progressView.isHidden = true
                 
+                directionsLabel.isHidden = true
+                
                 dropViewTop.isHidden = true
                 dropViewBottom.isHidden = true
             case .progress:
                 contentView.isHidden = true
                 settingsView.isHidden = true
                 progressView.isHidden = false
+                
+                directionsLabel.isHidden = true
                 
                 dropViewTop.isHidden = true
                 dropViewBottom.isHidden = true
@@ -194,6 +206,7 @@ class DashboardViewController: NSViewController {
                    }).sorted(by: { $0.modifiedAt > $1.modifiedAt })
             
             DispatchQueue.main.async { [weak self] in
+                self?.directionsLabel.isHidden = !(self?.gifFiles.isEmpty ?? true)
                 self?.collectionView.reloadData()
             }
         }
