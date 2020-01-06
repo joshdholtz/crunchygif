@@ -812,7 +812,7 @@
                                 <rect key="frame" x="0.0" y="565" width="533" height="40"/>
                                 <subviews>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vYv-93-PJx">
-                                        <rect key="frame" x="503" y="9" width="17" height="21"/>
+                                        <rect key="frame" x="502" y="9" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Gear" imagePosition="only" alignment="center" transparent="YES" inset="2" id="boF-Qj-3R9">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
