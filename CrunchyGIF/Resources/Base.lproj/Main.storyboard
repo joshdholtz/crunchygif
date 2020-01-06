@@ -995,7 +995,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="fbm-JF-UMw"/>
                                         </constraints>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Use Width or Height of -1 to keep aspect ration" id="lOV-hV-GfM">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Use Width or Height of -1 to keep aspect ratio" id="lOV-hV-GfM">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
