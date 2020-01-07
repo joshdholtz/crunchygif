@@ -11,7 +11,7 @@ import Cocoa
 // https://stackoverflow.com/a/34278766
 class DropView: NSView {
     
-    typealias OnDrop = ([String]) -> ()
+    typealias OnDrop = ([URL]) -> ()
     typealias OnStart = () -> ()
     typealias OnEnd = () -> ()
     
@@ -49,7 +49,9 @@ class DropView: NSView {
     }
 
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        let paths = DragTools.getFilePaths(draggingInfo: sender)
+        let paths = DragTools.getFilePaths(draggingInfo: sender).map { (path) -> URL in
+            return URL(fileURLWithPath: path)
+        }
         guard !paths.isEmpty else {
             return false
         }

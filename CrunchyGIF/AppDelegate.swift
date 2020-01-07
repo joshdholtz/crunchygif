@@ -26,47 +26,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.button?.window?.registerForDraggedTypes([.fileURL])
         statusItem.button?.window?.delegate = self
         
-        
-        
-        NotificationCenter.default.addObserver(forName: MovDocument.newMovDocument, object: nil, queue: nil) { (notification) in
-            guard let document = notification.object as? MovDocument else {
+        NotificationCenter.default.addObserver(forName: MovDocument.newMovDocument, object: nil, queue: nil) { [weak self] (notification) in
+            guard let path = notification.object as? URL else {
                 return
             }
             
-            print("document: \(document)")
-            document.close()
-            NSDocumentController.shared.removeDocument(document)
-            
-            print("current document: \(NSDocumentController.shared.currentDocument)")
+            self?.showPopover(sender: nil)
+            self?.dashboardViewController.onDropStartDefaults()
+            self?.dashboardViewController.onDropDefaults(paths: [path]) {
+                try? FileManager.default.removeItem(at: path)
+            }
         }
     }
     
-    func application(_ application: NSApplication, open urls: [URL]) {
-        // https://stackoverflow.com/a/11609984/2464643
-        print("hey: \(urls)")
-        
-        let paths = urls.map { (url) -> String in
-            return url.absoluteString
-        }
-        
-        var fileSize : UInt64
-
-        do {
-            //return [FileAttributeKey : Any]
-            let attr = try FileManager.default.attributesOfItem(atPath: paths.first!)
-            fileSize = attr[FileAttributeKey.size] as! UInt64
-
-            //if you convert to NSDictionary, you can get file size old way as well.
-            let dict = attr as NSDictionary
-            fileSize = dict.fileSize()
-            print("file size: \(fileSize)")
-        } catch {
-            print("Error: \(error)")
-        }
-        
-//        showPopover(sender: nil)
-//        dashboardViewController.onDropStartDefaults()
-//        dashboardViewController.onDropDefaults(paths: paths)
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        showPopover(sender: nil)
+        return true
+    }
+    
+    func applicationWillResignActive(_ notification: Notification) {
+        closePopover(sender: nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -102,7 +81,9 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
 
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        let paths = DragTools.getFilePaths(draggingInfo: sender)
+        let paths = DragTools.getFilePaths(draggingInfo: sender).map { (path) -> URL in
+            return URL(fileURLWithPath: path)
+        }
         guard !paths.isEmpty else {
             return false
         }

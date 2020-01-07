@@ -11,6 +11,8 @@ import ImageIO
 
 class DashboardViewController: NSViewController {
     
+    typealias DropDone = () -> Void
+    
     @IBOutlet var navigationBar: NSView!
     @IBOutlet var dropViewTop: DropView!
     @IBOutlet var dropViewBottom: DropView!
@@ -146,11 +148,15 @@ class DashboardViewController: NSViewController {
         
         dropViewTop.onStart = onDropStartCustom
         dropViewTop.onEnd = onDropEnd
-        dropViewTop.onDrop = onDropCustom
+        dropViewTop.onDrop = { [weak self] paths in
+            self?.onDropCustom(paths: paths)
+        }
         
         dropViewBottom.onStart = onDropStartDefaults
         dropViewBottom.onEnd = onDropEnd
-        dropViewBottom.onDrop = onDropDefaults
+        dropViewBottom.onDrop = { [weak self] paths in
+            self?.onDropDefaults(paths: paths)
+        }
     }
     
     override func viewDidAppear() {
@@ -267,12 +273,12 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    func onDropDefaults(paths: [String]) {
+    func onDropDefaults(paths: [URL], done: DropDone? = nil) {
         let setting = Setting.fetch(kind: .defaults)
-        onDrop(paths: paths, setting: setting)
+        onDrop(paths: paths, setting: setting, done: done)
     }
     
-    func onDropCustom(paths: [String]) {
+    func onDropCustom(paths: [URL], done: DropDone? = nil) {
         
         settingsViewController.loadSetting(kind: .custom)
         settingsViewController.onBack = { [unowned self] in
@@ -280,7 +286,7 @@ class DashboardViewController: NSViewController {
         }
         settingsViewController.onDone = { [unowned self] in
             let setting = Setting.fetch(kind: .custom)
-            self.onDrop(paths: paths, setting: setting)
+            self.onDrop(paths: paths, setting: setting, done: done)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
@@ -288,7 +294,7 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    func onDrop(paths: [String], setting: Setting) {
+    func onDrop(paths: [URL], setting: Setting, done: DropDone? = nil) {
         state = .progress
         
         isDropping = true
@@ -302,11 +308,14 @@ class DashboardViewController: NSViewController {
             return GifOperation(path: path, filter: filter)
         }
         
-        let finishedOperation = BlockOperation {
-            DispatchQueue.main.async { [weak self] in
-                self?.isDropping = false
-                self?.progressViewController.stop()
-                self?.reloadImages()
+        let finishedOperation = BlockOperation { [unowned self] in
+            if self.gifQueue.operationCount == 1 {
+                DispatchQueue.main.async { [weak self] in
+                    self?.isDropping = false
+                    self?.progressViewController.stop()
+                    self?.reloadImages()
+    //                done?()
+                }
             }
         }
         pathOperations.append(finishedOperation)

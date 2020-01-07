@@ -12,48 +12,22 @@ import Cocoa
 class MovDocument: NSDocument {
     static let newMovDocument = Notification.Name("new-mov-document")
     
-//    var viewController: ViewController? {
-//        return windowControllers.first?.contentViewController
-//            as? ViewController
-//    }
-    
-    enum Ugh: Error {
-        case dude
-    }
-    
-    
-    override func read(from data: Data, ofType typeName: String) throws {
-        
+    override func read(from url: URL, ofType typeName: String) throws {
+        let fileNameAndExtension = url.lastPathComponent.replacingOccurrences(of: " ", with: "_")
+        let fileExtension = url.pathExtension
+        let fileName = fileNameAndExtension.replacingOccurrences(of: ".\(fileExtension)", with: "")
         
         let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
 
         let timestamp = Int(Date().timeIntervalSince1970)
-        let timestampPath = cachesPath.appendingPathComponent("gifs").appendingPathComponent("\(timestamp)")
+        let timestampPath = cachesPath.appendingPathComponent("movs").appendingPathComponent("\(timestamp)")
 
         try? FileManager.default.createDirectory(at: timestampPath, withIntermediateDirectories: true, attributes: nil)
 
-        let fileName = "josh"
-        let fileExtension = "mov"
         let pathIn = timestampPath.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
-
-        do {
-            try data.write(to: pathIn)
-//            try FileManager.default.copyItem(at: path, to: pathIn)
-
-//            toGif(filter: filter, pathIn: pathIn, pathOut: pathOut) { [weak self] in
-//                try? FileManager.default.removeItem(at: pathIn)
-//
-//                DispatchQueue.main.async { [weak self] in
-//                    self?.finish()
-//                }
-//            }
-        } catch {
-            debugPrint("Whoops: \(error)")
-//            finish()
-        }
         
-        NotificationCenter.default.post(name: MovDocument.newMovDocument, object: self)
+        fileURL = pathIn
+        try FileManager.default.copyItem(at: url, to: pathIn)
+        NotificationCenter.default.post(name: MovDocument.newMovDocument, object: pathIn)
     }
-    
-    
 }
