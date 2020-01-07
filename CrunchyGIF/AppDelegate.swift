@@ -62,13 +62,14 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
 
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        guard let path = DragTools.getFilePath(draggingInfo: sender) else {
+        let paths = DragTools.getFilePaths(draggingInfo: sender)
+        guard !paths.isEmpty else {
             return false
         }
 
-        showPopover(sender: nil)
         dashboardViewController.onDropStartDefaults()
-        dashboardViewController.onDropDefaults(path: path)
+        dashboardViewController.onDropDefaults(paths: paths)
+        showPopover(sender: nil)
 
         return true
     }
