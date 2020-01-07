@@ -33,7 +33,13 @@ class DashboardViewController: NSViewController {
     var isDropping = false
     
     var gifFiles: [GifFile] = []
-    var processMeta: (Process, DispatchWorkItem)?
+    
+    lazy var gifQueue: OperationQueue = {
+      var queue = OperationQueue()
+      queue.name = "GIF queue"
+      queue.maxConcurrentOperationCount = 1
+      return queue
+    }()
     
     enum State {
         case gifs, dropDefaults, dropCustom, settings, progress
@@ -260,19 +266,20 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    func onDropDefaults(path: String) {
+    func onDropDefaults(paths: [String]) {
         let setting = Setting.fetch(kind: .defaults)
-        onDrop(path: path, setting: setting)
+        onDrop(paths: paths, setting: setting)
     }
     
-    func onDropCustom(path: String) {
+    func onDropCustom(paths: [String]) {
+        
         settingsViewController.loadSetting(kind: .custom)
         settingsViewController.onBack = { [unowned self] in
             self.state = .gifs
         }
         settingsViewController.onDone = { [unowned self] in
             let setting = Setting.fetch(kind: .custom)
-            self.onDrop(path: path, setting: setting)
+            self.onDrop(paths: paths, setting: setting)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
@@ -280,7 +287,7 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    func onDrop(path: String, setting: Setting) {
+    func onDrop(paths: [String], setting: Setting) {
         state = .progress
         
         isDropping = true
@@ -290,37 +297,20 @@ class DashboardViewController: NSViewController {
         let filter = "fps=\(setting.fps),scale=\(setting.width):\(setting.height):flags=lanczos"
         
         // Path stuff
-        let path = URL(fileURLWithPath: path)
-        let fileNameAndExtension = path.lastPathComponent.replacingOccurrences(of: " ", with: "_")
-        let fileExtension = path.pathExtension
-        let fileName = fileNameAndExtension.replacingOccurrences(of: ".\(fileExtension)", with: "")
-        
-        let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        
-        let timestamp = Int(Date().timeIntervalSince1970)
-        let timestampPath = cachesPath.appendingPathComponent("gifs").appendingPathComponent("\(timestamp)")
-        
-        try? FileManager.default.createDirectory(at: timestampPath, withIntermediateDirectories: true, attributes: nil)
-        
-        let pathIn = timestampPath.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
-        let pathOut = timestampPath.appendingPathComponent(fileName).appendingPathExtension("gif")
-        
-        do {
-            try FileManager.default.copyItem(at: path, to: pathIn)
-            
-            toGif(filter: filter, pathIn: pathIn, pathOut: pathOut) { [weak self] in
-                try? FileManager.default.removeItem(at: pathIn)
-                self?.dropViewBottom.fileToPaste = pathOut
-                
-                DispatchQueue.main.async { [weak self] in
-                    self?.isDropping = false
-                    self?.progressViewController.stop()
-                    self?.reloadImages()
-                }
-            }
-        } catch {
-            print("Whoops: \(error)")
+        var pathOperations = paths.map { (path) -> Operation in
+            return GifOperation(path: path, filter: filter)
         }
+        
+        let finishedOperation = BlockOperation {
+            DispatchQueue.main.async { [weak self] in
+                self?.isDropping = false
+                self?.progressViewController.stop()
+                self?.reloadImages()
+            }
+        }
+        pathOperations.append(finishedOperation)
+        
+        gifQueue.addOperations(pathOperations, waitUntilFinished: false)
     }
     
     func startImageRotate() {
@@ -416,50 +406,6 @@ extension DashboardViewController : NSCollectionViewDataSource {
         let gifFile = gifFiles[indexPath.item]
         collectionViewItem.gifFile = gifFile
         return item
-    }
-}
-
-extension DashboardViewController {
-    func toGif(filter: String, pathIn: URL, pathOut: URL, done: @escaping () -> ()) {
-        let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let tempPath = cachesPath.appendingPathComponent("tmp")
-        
-        try? FileManager.default.createDirectory(at: tempPath, withIntermediateDirectories: true, attributes: nil)
-
-        let paletteTemp = tempPath.appendingPathComponent("palette.png")
-        
-        // https://cassidy.codes/blog/2017/04/25/ffmpeg-frames-to-gif-optimization/
-        
-        let argumentsPalette = [
-            "-v",
-            "warning",
-            "-i",
-            pathIn.absoluteString,
-            "-vf",
-            "\(filter),palettegen=stats_mode=diff",
-            "-y",
-            paletteTemp.absoluteString
-        ]
-        
-        let argumentsWithPalette = [
-            "-i",
-            pathIn.absoluteString,
-            "-i",
-            paletteTemp.absoluteString,
-            "-lavfi",
-            "\(filter),paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle",
-            "-y",
-            pathOut.absoluteString
-        ]
-        
-        processMeta = GifTools.createFFMPEGProcess(arguments: argumentsPalette) { [unowned self] (terminated) in
-            print("terminated1: \(terminated)")
-            
-            self.processMeta = GifTools.createFFMPEGProcess(arguments: argumentsWithPalette) { (terminated) in
-                print("terminated2: \(terminated)")
-                done()
-            }
-        }
     }
 }
 

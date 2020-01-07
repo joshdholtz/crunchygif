@@ -25,6 +25,8 @@
 		03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A936D8235DDB4B001D3221 /* DashboardViewController.swift */; };
 		03D33E3C23BB0014009D08CA /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E3B23BB0014009D08CA /* ProgressViewController.swift */; };
 		03D33E3F23BBB688009D08CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E3D23BBB688009D08CA /* SettingsViewController.swift */; };
+		03D33E4223C41A5B009D08CA /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E4123C41A5B009D08CA /* AsyncOperation.swift */; };
+		03D33E4423C41ABB009D08CA /* GifOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E4323C41ABB009D08CA /* GifOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		03A936DA235DDF06001D3221 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
 		03D33E3B23BB0014009D08CA /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		03D33E3D23BBB688009D08CA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		03D33E4123C41A5B009D08CA /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		03D33E4323C41ABB009D08CA /* GifOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,8 @@
 			children = (
 				039F3F1723606C6900BBD069 /* GifTools.swift */,
 				033A2DEE23BA94C60070216A /* DragTools.swift */,
+				03D33E4123C41A5B009D08CA /* AsyncOperation.swift */,
+				03D33E4323C41ABB009D08CA /* GifOperation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				034F78D62364CC1D0074218D /* AspectFillImageView.swift in Sources */,
+				03D33E4423C41ABB009D08CA /* GifOperation.swift in Sources */,
 				033A2DEF23BA94C60070216A /* DragTools.swift in Sources */,
 				03D33E3F23BBB688009D08CA /* SettingsViewController.swift in Sources */,
 				03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */,
@@ -372,6 +379,7 @@
 				036371162363E3E300858441 /* DragImageView.swift in Sources */,
 				036371132363DA4800858441 /* GifCollectionViewItem.swift in Sources */,
 				039F3F1A23606DBC00BBD069 /* DropView.swift in Sources */,
+				03D33E4223C41A5B009D08CA /* AsyncOperation.swift in Sources */,
 				032D289423BAC1860058C07F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

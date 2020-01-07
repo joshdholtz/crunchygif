@@ -11,15 +11,13 @@ import Cocoa
 // https://stackoverflow.com/a/34278766
 class DropView: NSView {
     
-    typealias OnDrop = (String) -> ()
+    typealias OnDrop = ([String]) -> ()
     typealias OnStart = () -> ()
     typealias OnEnd = () -> ()
     
     var onDrop: OnDrop?
     var onStart: OnStart?
     var onEnd: OnEnd?
-    
-    var fileToPaste: URL?
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -37,29 +35,26 @@ class DropView: NSView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         self.onStart?()
         if DragTools.checkExtension(sender) {
-//            self.layer?.backgroundColor = NSColor.red.cgColor
             return .copy
         } else {
             return NSDragOperation()
         }
     }
     override func draggingExited(_ sender: NSDraggingInfo?) {
-//        self.layer?.backgroundColor = NSColor.clear.cgColor
         self.onEnd?()
     }
 
     override func draggingEnded(_ sender: NSDraggingInfo) {
-//        self.layer?.backgroundColor = NSColor.clear.cgColor
         self.onEnd?()
     }
 
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        guard let path = DragTools.getFilePath(draggingInfo: sender) else {
+        let paths = DragTools.getFilePaths(draggingInfo: sender)
+        guard !paths.isEmpty else {
             return false
         }
-
-        onDrop?(path)
-
-        return true
+        
+        self.onDrop?(paths)
+        return paths.count > 0
     }
 }

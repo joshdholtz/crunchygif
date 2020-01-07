@@ -11,9 +11,10 @@ import Cocoa
 struct DragTools {
     static let expectedExt = ["mov"]
     
-    static func getFilePath(draggingInfo: NSDraggingInfo) -> String? {
+    static func getFilePaths(draggingInfo: NSDraggingInfo) -> [String] {
         let pasteboard = draggingInfo.draggingPasteboard.propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray
-        return pasteboard?.firstObject as? String
+        
+        return pasteboard as? [String] ?? []
     }
     
     static func checkExtension(_ drag: NSDraggingInfo) -> Bool {
