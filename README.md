@@ -1,5 +1,8 @@
-# CrunchyGIF
+# [CrunchyGIF](https://www.crunchygif.app/)
 
-We didn't have time to put anything here yet. We were shipping the app.
+## Social Media
+Follow us: [CrunchyGif](https://twitter.com/CrunchyGif)  
+Fearless Leader: [@joshdholtz](https://twitter.com/joshdholtz)  
+Download me on the Mac App Store, [here!](https://apps.apple.com/us/app/crunchygif-ezpz-video-to-gif/id1485165995)
 
-Refresh the page to see if there is anything in this README yet :wink:
+
