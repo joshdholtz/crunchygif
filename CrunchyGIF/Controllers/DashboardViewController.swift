@@ -215,9 +215,10 @@ class DashboardViewController: NSViewController {
                            url: url)
                    }).sorted(by: { $0.modifiedAt > $1.modifiedAt })
             
-            DispatchQueue.main.async { [weak self] in
-                self?.directionsLabel.isHidden = !(self?.gifFiles.isEmpty ?? true)
-                self?.collectionView.reloadData()
+            DispatchQueue.main.async { [unowned self] in
+                let state = self.state
+                self.state = state
+                self.collectionView.reloadData()
             }
         }
     }

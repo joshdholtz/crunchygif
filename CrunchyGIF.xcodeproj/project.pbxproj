@@ -27,6 +27,7 @@
 		03D33E3F23BBB688009D08CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E3D23BBB688009D08CA /* SettingsViewController.swift */; };
 		03D33E4223C41A5B009D08CA /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E4123C41A5B009D08CA /* AsyncOperation.swift */; };
 		03D33E4423C41ABB009D08CA /* GifOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E4323C41ABB009D08CA /* GifOperation.swift */; };
+		03D33E4623C4371B009D08CA /* MovDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D33E4523C4371B009D08CA /* MovDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		03D33E3D23BBB688009D08CA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		03D33E4123C41A5B009D08CA /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		03D33E4323C41ABB009D08CA /* GifOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifOperation.swift; sourceTree = "<group>"; };
+		03D33E4523C4371B009D08CA /* MovDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				033A2DEE23BA94C60070216A /* DragTools.swift */,
 				03D33E4123C41A5B009D08CA /* AsyncOperation.swift */,
 				03D33E4323C41ABB009D08CA /* GifOperation.swift */,
+				03D33E4523C4371B009D08CA /* MovDocument.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				03A936D9235DDB4B001D3221 /* DashboardViewController.swift in Sources */,
 				03A936AD235DD8A7001D3221 /* AppDelegate.swift in Sources */,
 				039F3F1823606C6900BBD069 /* GifTools.swift in Sources */,
+				03D33E4623C4371B009D08CA /* MovDocument.swift in Sources */,
 				03D33E3C23BB0014009D08CA /* ProgressViewController.swift in Sources */,
 				036371162363E3E300858441 /* DragImageView.swift in Sources */,
 				036371132363DA4800858441 /* GifCollectionViewItem.swift in Sources */,

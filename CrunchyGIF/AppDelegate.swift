@@ -10,8 +10,6 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    
 
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let popover = NSPopover()
@@ -27,6 +25,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         statusItem.button?.window?.registerForDraggedTypes([.fileURL])
         statusItem.button?.window?.delegate = self
+        
+        
+        
+        NotificationCenter.default.addObserver(forName: MovDocument.newMovDocument, object: nil, queue: nil) { (notification) in
+            guard let document = notification.object as? MovDocument else {
+                return
+            }
+            
+            print("document: \(document)")
+            document.close()
+            NSDocumentController.shared.removeDocument(document)
+            
+            print("current document: \(NSDocumentController.shared.currentDocument)")
+        }
+    }
+    
+    func application(_ application: NSApplication, open urls: [URL]) {
+        // https://stackoverflow.com/a/11609984/2464643
+        print("hey: \(urls)")
+        
+        let paths = urls.map { (url) -> String in
+            return url.absoluteString
+        }
+        
+        var fileSize : UInt64
+
+        do {
+            //return [FileAttributeKey : Any]
+            let attr = try FileManager.default.attributesOfItem(atPath: paths.first!)
+            fileSize = attr[FileAttributeKey.size] as! UInt64
+
+            //if you convert to NSDictionary, you can get file size old way as well.
+            let dict = attr as NSDictionary
+            fileSize = dict.fileSize()
+            print("file size: \(fileSize)")
+        } catch {
+            print("Error: \(error)")
+        }
+        
+//        showPopover(sender: nil)
+//        dashboardViewController.onDropStartDefaults()
+//        dashboardViewController.onDropDefaults(paths: paths)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -67,9 +107,9 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
             return false
         }
 
+        showPopover(sender: nil)
         dashboardViewController.onDropStartDefaults()
         dashboardViewController.onDropDefaults(paths: paths)
-        showPopover(sender: nil)
 
         return true
     }
