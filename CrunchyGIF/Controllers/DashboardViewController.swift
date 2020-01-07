@@ -149,7 +149,11 @@ class DashboardViewController: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        reloadImages()
+        
+        // Only reload if we are already viewing
+        if case .gifs = state {
+            reloadImages()
+        }
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
