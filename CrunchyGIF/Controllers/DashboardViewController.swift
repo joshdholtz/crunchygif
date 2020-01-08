@@ -11,12 +11,14 @@ import ImageIO
 
 class DashboardViewController: NSViewController {
     
+    typealias DropDone = () -> Void
+    
     @IBOutlet var navigationBar: NSView!
     @IBOutlet var dropViewTop: DropView!
     @IBOutlet var dropViewBottom: DropView!
     @IBOutlet var contentView: NSView!
     
-    @IBOutlet weak var directionsLabel: NSTextField!
+    @IBOutlet weak var directionsView: NSView!
     
     @IBOutlet weak var progressView: NSView!
     @IBOutlet weak var settingsView: NSView!
@@ -53,7 +55,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = !gifFiles.isEmpty
+                directionsView.isHidden = !gifFiles.isEmpty
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
@@ -62,7 +64,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
@@ -79,7 +81,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
@@ -96,7 +98,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = false
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = true
                 dropViewBottom.isHidden = true
@@ -105,7 +107,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = false
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = true
                 dropViewBottom.isHidden = true
@@ -146,19 +148,29 @@ class DashboardViewController: NSViewController {
         
         dropViewTop.onStart = onDropStartCustom
         dropViewTop.onEnd = onDropEnd
-        dropViewTop.onDrop = onDropCustom
+        dropViewTop.onDrop = { [weak self] paths in
+            self?.onDropCustom(paths: paths)
+        }
         
         dropViewBottom.onStart = onDropStartDefaults
         dropViewBottom.onEnd = onDropEnd
-        dropViewBottom.onDrop = onDropDefaults
+        dropViewBottom.onDrop = { [weak self] paths in
+            self?.onDropDefaults(paths: paths)
+        }
     }
     
-    override func viewDidAppear() {
+    var windowNotification: NSObjectProtocol? = nil
+    override func viewDidAppear() { 
         super.viewDidAppear()
-        
         // Only reload if we are already viewing
         if case .gifs = state {
             reloadImages()
+        }
+        
+        if let window = view.window, windowNotification == nil {
+            windowNotification = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { (notification) in
+                (NSApplication.shared.delegate as? AppDelegate)?.closePopover(sender: nil)
+            }
         }
     }
     
@@ -215,9 +227,10 @@ class DashboardViewController: NSViewController {
                            url: url)
                    }).sorted(by: { $0.modifiedAt > $1.modifiedAt })
             
-            DispatchQueue.main.async { [weak self] in
-                self?.directionsLabel.isHidden = !(self?.gifFiles.isEmpty ?? true)
-                self?.collectionView.reloadData()
+            DispatchQueue.main.async { [unowned self] in
+                let state = self.state
+                self.state = state
+                self.collectionView.reloadData()
             }
         }
     }
@@ -266,12 +279,12 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    func onDropDefaults(paths: [String]) {
+    func onDropDefaults(paths: [URL], done: DropDone? = nil) {
         let setting = Setting.fetch(kind: .defaults)
-        onDrop(paths: paths, setting: setting)
+        onDrop(paths: paths, setting: setting, done: done)
     }
     
-    func onDropCustom(paths: [String]) {
+    func onDropCustom(paths: [URL], done: DropDone? = nil) {
         
         settingsViewController.loadSetting(kind: .custom)
         settingsViewController.onBack = { [unowned self] in
@@ -279,7 +292,7 @@ class DashboardViewController: NSViewController {
         }
         settingsViewController.onDone = { [unowned self] in
             let setting = Setting.fetch(kind: .custom)
-            self.onDrop(paths: paths, setting: setting)
+            self.onDrop(paths: paths, setting: setting, done: done)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
@@ -287,7 +300,7 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    func onDrop(paths: [String], setting: Setting) {
+    func onDrop(paths: [URL], setting: Setting, done: DropDone? = nil) {
         state = .progress
         
         isDropping = true
@@ -301,11 +314,14 @@ class DashboardViewController: NSViewController {
             return GifOperation(path: path, filter: filter)
         }
         
-        let finishedOperation = BlockOperation {
-            DispatchQueue.main.async { [weak self] in
-                self?.isDropping = false
-                self?.progressViewController.stop()
-                self?.reloadImages()
+        let finishedOperation = BlockOperation { [unowned self] in
+            if self.gifQueue.operationCount == 1 {
+                DispatchQueue.main.async { [weak self] in
+                    self?.isDropping = false
+                    self?.progressViewController.stop()
+                    self?.reloadImages()
+                    done?()
+                }
             }
         }
         pathOperations.append(finishedOperation)

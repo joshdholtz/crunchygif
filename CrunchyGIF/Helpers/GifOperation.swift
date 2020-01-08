@@ -10,18 +10,17 @@ import Foundation
 
 class GifOperation: AsynchOperation {
     
-    private let path: String
+    private let path: URL
     private let filter: String
     var processMeta: (Process, DispatchWorkItem)?
     
-    init(path: String, filter: String) {
+    init(path: URL, filter: String) {
         self.path = path
         self.filter = filter
     }
     
     override func main() {
         // Path stuff
-        let path = URL(fileURLWithPath: self.path)
         let fileNameAndExtension = path.lastPathComponent.replacingOccurrences(of: " ", with: "_")
         let fileExtension = path.pathExtension
         let fileName = fileNameAndExtension.replacingOccurrences(of: ".\(fileExtension)", with: "")
@@ -35,7 +34,7 @@ class GifOperation: AsynchOperation {
 
         let pathIn = timestampPath.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
         let pathOut = timestampPath.appendingPathComponent(fileName).appendingPathExtension("gif")
-
+        
         do {
             try FileManager.default.copyItem(at: path, to: pathIn)
 

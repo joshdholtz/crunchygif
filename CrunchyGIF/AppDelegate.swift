@@ -10,8 +10,6 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    
 
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let popover = NSPopover()
@@ -27,6 +25,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         statusItem.button?.window?.registerForDraggedTypes([.fileURL])
         statusItem.button?.window?.delegate = self
+        
+        NotificationCenter.default.addObserver(forName: MovDocument.newMovDocument, object: nil, queue: nil) { [weak self] (notification) in
+            guard let path = notification.object as? URL else {
+                return
+            }
+            
+            self?.showPopover(sender: nil)
+            self?.dashboardViewController.onDropStartDefaults()
+            self?.dashboardViewController.onDropDefaults(paths: [path]) {
+                // Delete folder of mov
+                try? FileManager.default.removeItem(at: path.deletingLastPathComponent())
+            }
+        }
+        
+        showPopover(sender: nil)
+    }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        showPopover(sender: nil)
+        return true
+    }
+    
+    func applicationWillResignActive(_ notification: Notification) {
+        closePopover(sender: nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -44,6 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showPopover(sender: Any?) {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
         }
     }
     
@@ -62,14 +85,16 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
 
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        let paths = DragTools.getFilePaths(draggingInfo: sender)
+        let paths = DragTools.getFilePaths(draggingInfo: sender).map { (path) -> URL in
+            return URL(fileURLWithPath: path)
+        }
         guard !paths.isEmpty else {
             return false
         }
 
+        showPopover(sender: nil)
         dashboardViewController.onDropStartDefaults()
         dashboardViewController.onDropDefaults(paths: paths)
-        showPopover(sender: nil)
 
         return true
     }
