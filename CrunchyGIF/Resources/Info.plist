@@ -9,6 +9,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>Movie</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
