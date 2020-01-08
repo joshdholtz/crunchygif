@@ -33,8 +33,8 @@ class DropView: NSView {
     }
 
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        self.onStart?()
         if DragTools.checkExtension(sender) {
+            self.onStart?()
             return .copy
         } else {
             return NSDragOperation()

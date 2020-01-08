@@ -159,12 +159,18 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    override func viewDidAppear() {
+    var windowNotification: NSObjectProtocol? = nil
+    override func viewDidAppear() { 
         super.viewDidAppear()
-        
         // Only reload if we are already viewing
         if case .gifs = state {
             reloadImages()
+        }
+        
+        if let window = view.window, windowNotification == nil {
+            windowNotification = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { (notification) in
+                (NSApplication.shared.delegate as? AppDelegate)?.closePopover(sender: nil)
+            }
         }
     }
     
