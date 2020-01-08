@@ -37,6 +37,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 try? FileManager.default.removeItem(at: path)
             }
         }
+        
+        showPopover(sender: nil)
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
