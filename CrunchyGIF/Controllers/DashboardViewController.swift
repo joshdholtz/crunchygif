@@ -18,7 +18,7 @@ class DashboardViewController: NSViewController {
     @IBOutlet var dropViewBottom: DropView!
     @IBOutlet var contentView: NSView!
     
-    @IBOutlet weak var directionsLabel: NSTextField!
+    @IBOutlet weak var directionsView: NSView!
     
     @IBOutlet weak var progressView: NSView!
     @IBOutlet weak var settingsView: NSView!
@@ -55,7 +55,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = !gifFiles.isEmpty
+                directionsView.isHidden = !gifFiles.isEmpty
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
@@ -64,7 +64,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
@@ -81,7 +81,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = false
                 dropViewBottom.isHidden = false
@@ -98,7 +98,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = false
                 progressView.isHidden = true
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = true
                 dropViewBottom.isHidden = true
@@ -107,7 +107,7 @@ class DashboardViewController: NSViewController {
                 settingsView.isHidden = true
                 progressView.isHidden = false
                 
-                directionsLabel.isHidden = true
+                directionsView.isHidden = true
                 
                 dropViewTop.isHidden = true
                 dropViewBottom.isHidden = true

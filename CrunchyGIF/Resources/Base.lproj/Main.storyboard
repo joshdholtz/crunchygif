@@ -808,15 +808,37 @@
                                     </scrollView>
                                 </subviews>
                             </customView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ckE-hQ-SG1">
-                                <rect key="frame" x="18" y="215" width="497" height="136"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" alignment="center" title="Drag and drop a video into the window or onto the menu bar icon and wait for your GIF to be made!" drawsBackground="YES" id="vvM-oB-SPe">
-                                    <font key="font" metaFont="systemThin" size="30"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textFieldCell>
-                            </textField>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pFG-6p-rG4">
+                                <rect key="frame" x="0.0" y="0.0" width="533" height="565"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ckE-hQ-SG1">
+                                        <rect key="frame" x="18" y="434" width="497" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" selectable="YES" alignment="left" title="Get started making GIFs! " drawsBackground="YES" id="vvM-oB-SPe">
+                                            <font key="font" metaFont="systemLight" size="30"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KO3-2J-hqC">
+                                        <rect key="frame" x="41" y="365" width="429" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" selectable="YES" alignment="left" drawsBackground="YES" id="dVC-Uo-Pq8">
+                                            <font key="font" metaFont="systemThin" size="20"/>
+                                            <string key="title">- drag videos into this window
+- drag videos into menu bar icon - drag videos into dock app icon - right click on videos and open with CrunchyGIF</string>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PDf-Kq-ujs">
+                                        <rect key="frame" x="179" y="97" width="260" height="260"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="crunchy_logo" id="6jC-1Y-Q8z"/>
+                                    </imageView>
+                                </subviews>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ybH-dc-GOj">
                                 <rect key="frame" x="0.0" y="565" width="533" height="40"/>
                                 <subviews>
@@ -859,7 +881,7 @@
                         <outlet property="collectionView" destination="5mO-O0-NX5" id="Xzd-dy-tyn"/>
                         <outlet property="contentView" destination="2FG-bD-8Fk" id="Q6u-6p-IyP"/>
                         <outlet property="defaultsDescription" destination="Q9j-k7-vaU" id="Ubn-1m-x0Z"/>
-                        <outlet property="directionsLabel" destination="ckE-hQ-SG1" id="6xw-3z-aL3"/>
+                        <outlet property="directionsView" destination="pFG-6p-rG4" id="R6X-BH-XPy"/>
                         <outlet property="dropViewBottom" destination="fKH-dF-AMH" id="EQz-FR-OVE"/>
                         <outlet property="dropViewTop" destination="9lw-0p-xXL" id="lK0-Cs-nJZ"/>
                         <outlet property="navigationBar" destination="ybH-dc-GOj" id="ZCk-qe-Rr9"/>
