@@ -168,8 +168,8 @@ class DashboardViewController: NSViewController {
         }
         
         if let window = view.window, windowNotification == nil {
-            windowNotification = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { (notification) in
-                (NSApplication.shared.delegate as? AppDelegate)?.closePopover(sender: nil)
+            windowNotification = NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification, object: window, queue: nil) { (notification) in
+                NSRunningApplication.current.activate(options: [.activateIgnoringOtherApps, .activateAllWindows])
             }
         }
     }
