@@ -34,7 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self?.showPopover(sender: nil)
             self?.dashboardViewController.onDropStartDefaults()
             self?.dashboardViewController.onDropDefaults(paths: [path]) {
-                try? FileManager.default.removeItem(at: path)
+                // Delete folder of mov
+                try? FileManager.default.removeItem(at: path.deletingLastPathComponent())
             }
         }
         

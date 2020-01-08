@@ -320,7 +320,7 @@ class DashboardViewController: NSViewController {
                     self?.isDropping = false
                     self?.progressViewController.stop()
                     self?.reloadImages()
-    //                done?()
+                    done?()
                 }
             }
         }
