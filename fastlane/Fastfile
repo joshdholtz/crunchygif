@@ -35,7 +35,6 @@ platform :mac do
   end
 
   lane :release do
-    ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "mhbi-rbme-eqae-iczg"
     deliver(
       username: 'me@joshholtz.com',
       dev_portal_team_name: 'Josh Holtz',
