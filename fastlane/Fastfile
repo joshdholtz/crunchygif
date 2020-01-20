@@ -29,8 +29,6 @@ platform :mac do
           "com.joshholtz.CrunchyGIF": "CrunchyGIF AppStore"
         }
       },
-
-      #mac_app_installer_cert_name: '3rd Party Mac Developer Installer: Josh Holtz (972KS36P2U)'
     )
   end
 
@@ -41,11 +39,6 @@ platform :mac do
       team_name: 'Josh Holtz',
 
       app_identifier: 'com.joshholtz.CrunchyGIF',
-      #pkg: 'inFUNtory.pkg',
-
-      # platform: 'osx',
-      # app_identifier: 'com.goodnightcar.GoodNightCar',
-      # app_identifier: 'com.getpicter.Sharkagram',
       
       ignore_language_directory_validation: true,
       run_precheck_before_submit: false,
