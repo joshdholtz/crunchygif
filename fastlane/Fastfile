@@ -30,7 +30,7 @@ platform :mac do
         }
       },
 
-      mac_app_installer_cert_name: '3rd Party Mac Developer Installer: Josh Holtz (972KS36P2U)'
+      #mac_app_installer_cert_name: '3rd Party Mac Developer Installer: Josh Holtz (972KS36P2U)'
     )
   end
 
