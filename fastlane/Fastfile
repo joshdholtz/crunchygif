@@ -1,0 +1,54 @@
+platform :mac do
+  lane :omg do
+    bump
+    build
+    release
+  end
+
+  lane :bump do
+    build_number = sh("date +%s").strip
+    project_path = '../CrunchyGIF.xcodeproj'
+
+    fastlane_require 'xcodeproj'
+    xcproj = Xcodeproj::Project.open(project_path)
+
+    xcproj.targets.each do |target|
+      target.build_configuration_list.set_setting('CURRENT_PROJECT_VERSION', build_number)
+    end
+    xcproj.save
+  end
+
+  lane :build do
+    gym(
+      scheme: 'CrunchyGIF',
+      export_method: 'app-store',
+
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: {
+          "com.joshholtz.CrunchyGIF": "CrunchyGIF AppStore"
+        }
+      },
+    )
+  end
+
+  lane :release do
+    deliver(
+      username: 'me@joshholtz.com',
+      dev_portal_team_name: 'Josh Holtz',
+      team_name: 'Josh Holtz',
+
+      app_identifier: 'com.joshholtz.CrunchyGIF',
+      
+      ignore_language_directory_validation: true,
+      run_precheck_before_submit: false,
+
+      # submit_for_review: true,
+      # reject_if_possible: true,
+
+      skip_metadata: true,
+      skip_screenshots: true,
+      skip_binary_upload: false
+    )
+  end
+end
