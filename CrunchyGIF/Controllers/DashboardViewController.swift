@@ -32,6 +32,8 @@ class DashboardViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
     
+    let dockIconMenuItem = NSMenuItem(title: "Hide Dock Icon", action: #selector(toggleDockIcon(_:)), keyEquivalent: "I")
+    
     var isDropping = false
     
     var gifFiles: [GifFile] = []
@@ -126,6 +128,7 @@ class DashboardViewController: NSViewController {
         settingsButton.contentTintColor = NSColor.lightGray
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Settings", action: #selector(settings(_:)), keyEquivalent: "S"))
+        menu.addItem(dockIconMenuItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Delete All Gifs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
         menu.addItem(NSMenuItem.separator())
@@ -157,6 +160,8 @@ class DashboardViewController: NSViewController {
         dropViewBottom.onDrop = { [weak self] paths in
             self?.onDropDefaults(paths: paths)
         }
+        
+        updateMenu()
     }
     
     var windowNotification: NSObjectProtocol? = nil
@@ -378,6 +383,31 @@ class DashboardViewController: NSViewController {
     }
 }
 
+extension DashboardViewController {
+    var hideDockIcon: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "hide_dock_icon")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "hide_dock_icon")
+            updateMenu()
+        }
+    }
+    
+    func updateMenu() {
+        if hideDockIcon {
+            dockIconMenuItem.state = .on
+            NSApp.setActivationPolicy(.accessory)
+        } else {
+            dockIconMenuItem.state = .off
+            NSApp.setActivationPolicy(.regular)
+        }
+    }
+    
+    @objc func toggleDockIcon(_ sender: Any?) {
+        hideDockIcon = !hideDockIcon
+    }
+}
 
 extension NSView {
     func setAnchorPoint(anchorPoint:CGPoint) {
