@@ -16,6 +16,9 @@
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.apple.quicktime-movie</string>
+				<string>public.mpeg-4</string>
+				<string>com.apple.m4v-video</string>
+				<string>public.avi</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).MovDocument</string>
@@ -42,7 +45,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
-	<false/>
+	<true/>
 	<key>NSDesktopFolderUsageDescription</key>
 	<string>Need</string>
 	<key>NSDocumentsFolderUsageDescription</key>

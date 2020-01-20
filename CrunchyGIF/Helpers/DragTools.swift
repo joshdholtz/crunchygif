@@ -9,7 +9,7 @@
 import Cocoa
 
 struct DragTools {
-    static let expectedExt = ["mov"]
+    static let expectedExt = ["mov", "mp4", "m4v", "avi"]
     
     static func getFilePaths(draggingInfo: NSDraggingInfo) -> [String] {
         let pasteboard = draggingInfo.draggingPasteboard.propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray
