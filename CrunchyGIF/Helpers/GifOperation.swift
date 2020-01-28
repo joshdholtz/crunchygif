@@ -37,6 +37,8 @@ class GifOperation: AsynchOperation {
         
         do {
             try FileManager.default.copyItem(at: path, to: pathIn)
+            
+            sleep(1)
 
             toGif(filter: filter, pathIn: pathIn, pathOut: pathOut) { [weak self] in
                 try? FileManager.default.removeItem(at: pathIn)
