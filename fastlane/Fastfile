@@ -1,10 +1,8 @@
-platform :mac do
-  lane :omg do
-    bump
-    build
-    release
-  end
+after_all do
+  debug
+end
 
+platform :mac do
   lane :bump do
     build_number = sh("date +%s").strip
     project_path = '../CrunchyGIF.xcodeproj'
@@ -18,21 +16,98 @@ platform :mac do
     xcproj.save
   end
 
-  lane :build do
-    gym(
-      scheme: 'CrunchyGIF',
-      export_method: 'app-store',
-
-      export_options: {
-        method: "app-store",
-        provisioningProfiles: {
-          "com.joshholtz.CrunchyGIF": "CrunchyGIF AppStore"
-        }
-      },
+  lane :noto_match do
+    match(
+      type: 'developer_id',
+      additional_cert_types: [ 
+        #'mac_installer_distribution',
+        'developer_id_installer',
+      ]
     )
   end
 
+  lane :test do
+    match(
+      type: 'developer_id',
+      #additional_cert_types: ['developer_id_installer']
+    )
+  end
+
+  lane :direct do
+    match(
+      type: 'developer_id',
+      additional_cert_types: ['developer_id_installer']
+    )
+
+    app = gym(
+      scheme: 'CrunchyGIF',
+      export_method: 'developer-id',
+      skip_package_pkg: true,
+    )
+
+    notarize(
+      username: "me@joshholtz",
+      app_identifier: "com.joshholtz.CrunchyGIF",
+      provider: "972KS36P2U",
+      path: app
+    )
+  end
+
+  lane :ewfwfee do
+    app = File.absolute_path(app)
+    puts "app: #{app}"
+
+    app_zip = "#{app}.zip"
+
+    sh ("/usr/bin/ditto -c -k --keepParent \"#{app.shellescape}\" \"#{app_zip.shellescape}\"")
+
+
+    bundle_id = "com.joshholtz.CrunchyGIF"
+    username = "me@joshholtz.com"
+    password = ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
+    provider = "972KS36P2U"
+   
+    parts = [] 
+    parts << "xcrun altool"
+    parts << "--notarize-app"
+    parts << "--primary-bundle-id \"#{bundle_id}\""
+    parts << "--username \"#{username}\""
+    parts << "--password \"#{password}\""
+    parts << "--asc-provider \"#{provider}\""
+    parts << "--file #{app_zip}"
+    parts << "--output-format xml"
+
+    cmd = parts.join(' ')
+    output = sh cmd
+
+    require 'plist'
+    result = Plist.parse_xml(output)
+
+    request_uuid = result["notarization-upload"]["RequestUUID"]
+    puts "request_uuid: #{request_uuid}"
+
+    #parts << "--output-format normal"
+
+    # xcrun altool --notarization-history 0 -u "AC_USERNAME" -p "@keychain:AC_PASSWORD"
+    # xcrun altool --notarization-info 2EFE2717-52EF-43A5-96DC-0797E4CA1041 -u "AC_USERNAME"
+  end
+
   lane :release do
+    match(type: 'appstore')
+    match(
+      type: 'appstore',
+      additional_cert_types: ['mac_installer_distribution']
+    )
+
+    mapping = Actions.lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
+    specifier = mapping[ENV['MATCH_APP_IDENTIFIER']]
+    ENV['GYM_XCARGS'] = "CODE_SIGN_IDENTITY=\"Apple Distribution\" PROVISIONING_PROFILE_SPECIFIER=\"#{specifier}\""
+
+    gym(
+      scheme: 'CrunchyGIF',
+      export_method: 'app-store',
+    )
+
     deliver(
       username: 'me@joshholtz.com',
       dev_portal_team_name: 'Josh Holtz',
@@ -42,9 +117,6 @@ platform :mac do
       
       ignore_language_directory_validation: true,
       run_precheck_before_submit: false,
-
-      # submit_for_review: true,
-      # reject_if_possible: true,
 
       skip_metadata: true,
       skip_screenshots: true,

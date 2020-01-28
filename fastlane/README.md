@@ -16,19 +16,29 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## Mac
-### mac omg
-```
-fastlane mac omg
-```
-
 ### mac bump
 ```
 fastlane mac bump
 ```
 
-### mac build
+### mac noto_match
 ```
-fastlane mac build
+fastlane mac noto_match
+```
+
+### mac test
+```
+fastlane mac test
+```
+
+### mac direct
+```
+fastlane mac direct
+```
+
+### mac ewfwfee
+```
+fastlane mac ewfwfee
 ```
 
 ### mac release
