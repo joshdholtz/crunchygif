@@ -21,29 +21,14 @@ or alternatively using `brew cask install fastlane`
 fastlane mac bump
 ```
 
-### mac noto_match
+### mac release_app_store
 ```
-fastlane mac noto_match
-```
-
-### mac test
-```
-fastlane mac test
+fastlane mac release_app_store
 ```
 
-### mac direct
+### mac release_developer_id
 ```
-fastlane mac direct
-```
-
-### mac ewfwfee
-```
-fastlane mac ewfwfee
-```
-
-### mac release
-```
-fastlane mac release
+fastlane mac release_developer_id
 ```
 
 
