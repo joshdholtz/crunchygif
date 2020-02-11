@@ -93,7 +93,6 @@ platform :mac do
   end
 
   lane :release do
-    match(type: 'appstore')
     match(
       type: 'appstore',
       additional_cert_types: ['mac_installer_distribution']
