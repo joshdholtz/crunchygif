@@ -507,7 +507,7 @@
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.joshholtz.CrunchyGIF macos";
+				PROVISIONING_PROFILE_SPECIFIER = GARBAGE;
 				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 			};
@@ -677,7 +677,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CrunchyGIF/Resources/CrunchyGIF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1581443350;
 				DEVELOPMENT_TEAM = 972KS36P2U;
@@ -702,7 +702,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CrunchyGIF/Resources/CrunchyGIF.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1581443350;
@@ -718,7 +718,7 @@
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.joshholtz.CrunchyGIF macos";
+				PROVISIONING_PROFILE_SPECIFIER = GARBAGE;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

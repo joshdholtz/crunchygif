@@ -59,6 +59,11 @@ platform :mac do
       skip_package_pkg: true
     )
 
-    # TODO: Do notarization
+    app_path = Dir.glob("../build/developerid/*.app").first
+    app_path = File.absolute_path(app_path)
+
+    notarize(
+      package: app_path
+    )
   end
 end
