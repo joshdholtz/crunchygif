@@ -24,7 +24,7 @@ struct DragTools {
 
         let suffix = URL(fileURLWithPath: path).pathExtension
         for ext in self.expectedExt {
-            if ext.lowercased() == suffix {
+            if ext.lowercased() == suffix.lowercased() {
                 return true
             }
         }
