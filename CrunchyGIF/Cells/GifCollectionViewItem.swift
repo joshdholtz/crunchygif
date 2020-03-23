@@ -13,6 +13,27 @@ struct GifFile {
     let thumbnail: NSImage?
     let fileName: String
     let url: URL
+
+    var size: String {
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
+            let fileSize = attributes[FileAttributeKey.size] as? UInt64 else {
+                return ""
+        }
+
+        // KB
+        var floatSize = Float(fileSize / 1024)
+        if floatSize < 1023 {
+            return String(format: "%.0f KB", floatSize)
+        }
+        // MB
+        floatSize = floatSize / 1024
+        if floatSize < 1023 {
+            return String(format: "%.1f MB", floatSize)
+        }
+        // GB
+        floatSize = floatSize / 1024
+        return String(format: "%.1f GB", floatSize)
+    }
 }
 
 class GifCollectionViewItem: NSCollectionViewItem {
@@ -22,7 +43,7 @@ class GifCollectionViewItem: NSCollectionViewItem {
             guard isViewLoaded else { return }
             if let gifFile = gifFile {
                 imageView?.image = gifFile.thumbnail
-                textField?.stringValue = gifFile.fileName
+                textField?.stringValue = gifFile.fileName + " " + "(\(gifFile.size))"
                 
                 
                 if let dragImageView = imageView as? DragImageView {
