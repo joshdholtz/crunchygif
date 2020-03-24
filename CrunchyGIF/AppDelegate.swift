@@ -47,14 +47,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    func applicationWillResignActive(_ notification: Notification) {
-        closePopover(sender: nil)
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-    
-    }
-    
     @objc func togglePopover(_ sender: Any?) {
         if popover.isShown {
             closePopover(sender: sender)
