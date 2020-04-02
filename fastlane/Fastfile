@@ -36,7 +36,7 @@ platform :mac do
     github_release = set_github_release(
       name: version,
       tag_name: version,
-      description: options[:description],
+      description: changelog,
       commitish: "master",
       upload_assets: [developer_id_app_path]
     )
