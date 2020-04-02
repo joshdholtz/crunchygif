@@ -130,7 +130,7 @@ class DashboardViewController: NSViewController {
         menu.addItem(NSMenuItem(title: "Settings", action: #selector(settings(_:)), keyEquivalent: "S"))
         menu.addItem(dockIconMenuItem)
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Delete All Gifs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
+        menu.addItem(NSMenuItem(title: "Delete All GIFs", action: #selector(deleteAllGifs(_:)), keyEquivalent: "P"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "More Info", action: #selector(moreInfo(_:)), keyEquivalent: "I"))
         menu.addItem(NSMenuItem(title: "Contact", action: #selector(contact(_:)), keyEquivalent: "C"))
@@ -359,15 +359,33 @@ class DashboardViewController: NSViewController {
     }
     
     @objc func deleteAllGifs(_ sender: Any?) {
-        DispatchQueue.init(label: "background").async { [weak self] in
-            let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-            let gifsPath = cachesPath.appendingPathComponent("gifs")
-            try? FileManager.default.removeItem(at: gifsPath)
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.reloadImages()
+        showDeleteAllGifsAlert { shouldDelete in
+            if shouldDelete {
+                DispatchQueue.init(label: "background").async { [weak self] in
+                    let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+                    let gifsPath = cachesPath.appendingPathComponent("gifs")
+                    try? FileManager.default.removeItem(at: gifsPath)
+
+                    DispatchQueue.main.async { [weak self] in
+                        self?.reloadImages()
+                    }
+                }
             }
         }
+    }
+
+    private func showDeleteAllGifsAlert(completion: (Bool) -> Void) {
+        guard let window = view.window else { return }
+
+        let alert = NSAlert()
+        alert.messageText = "Are you sure you want to permanently delete all the GIFs?"
+        alert.informativeText = "You can't undo this action."
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Delete All GIFs")
+        alert.addButton(withTitle: "Cancel")
+
+        alert.beginSheetModal(for: window, completionHandler: NSApp.stopModal(withCode:))
+        completion(NSApp.runModal(for: window) == .alertFirstButtonReturn)
     }
     
     @objc func moreInfo(_ sender: Any?) {
