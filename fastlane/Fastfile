@@ -42,8 +42,8 @@ platform :mac do
   lane :release_developer_id do
     match(
       type: 'developer_id',
-      additional_cert_types: [ 'developer_id_installer',
-      ]
+      git_branch: 'last-good-developer_id',
+      additional_cert_types: [ 'developer_id_installer' ]
     )
 
     # START: magic that is mostly project specific
