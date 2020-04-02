@@ -22,6 +22,7 @@ platform :mac do
     clean
 
     add_git_tag(tag: new_version)
+    push_get_tags
 
     release_app_store
     release_developer_id
