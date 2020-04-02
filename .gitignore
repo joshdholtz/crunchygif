@@ -124,5 +124,6 @@ Temporary Items
 
 # fastlane
 .env
+.env.secret
 
 *.swp

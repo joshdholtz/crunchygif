@@ -1,8 +1,7 @@
-default_platform :mac
+fastlane_require 'dotenv'
+Dotenv.load '.env.secret'
 
-after_all do
-  debug
-end
+default_platform :mac
 
 platform :mac do
   lane :bump do
@@ -23,9 +22,6 @@ platform :mac do
     version = Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_VERSION]
     changelog = Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_CONTENT]
 
-    puts "version: #{version}"
-    puts "changelog: #{changelog}"
-
     add_git_tag(tag: get_version_number)
     push_git_tags
 
@@ -37,7 +33,6 @@ platform :mac do
       name: version,
       tag_name: version,
       description: changelog,
-      commitish: "master",
       upload_assets: [developer_id_app_path]
     )
   end
