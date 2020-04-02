@@ -6,16 +6,34 @@ end
 
 platform :mac do
   lane :bump do
-    build_number = sh("date +%s").strip
-    project_path = '../CrunchyGIF.xcodeproj'
+    prompt_bump_and_changelog(
+      target: "CrunchyGIF"
+    )
+  end
 
-    fastlane_require 'xcodeproj'
-    xcproj = Xcodeproj::Project.open(project_path)
+  lane :clean do
+    FileUtils.rm_rf("../build")
+  end
 
-    xcproj.targets.each do |target|
-      target.build_configuration_list.set_setting('CURRENT_PROJECT_VERSION', build_number)
-    end
-    xcproj.save
+  lane :release do
+    ensure_git_status_clean
+    ensure_git_branch(branch: 'master')
+
+    clean
+
+    add_git_tag(tag: new_version)
+
+    release_app_store
+    release_developer_id
+
+    version = last_git_tag
+    github_release = set_github_release(
+      name: version,
+      tag_name: version,
+      description: options[:description],
+      commitish: "master",
+      upload_assets: [developer_id_app_path]
+    )
   end
 
   lane :release_app_store do
@@ -24,12 +42,7 @@ platform :mac do
       additional_cert_types: [ 'mac_installer_distribution' ]
     )
 
-    # START: magic that is mostly project specific
-    mapping = Actions.lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
-    specifier = mapping[ENV['MATCH_APP_IDENTIFIER']]
-    ENV['GYM_XCARGS'] = "CODE_SIGN_IDENTITY=\"Apple Distribution\" PROVISIONING_PROFILE_SPECIFIER=\"#{specifier}\""
-    # END: magic that is mostly project specific
-
+    fix_single_target_signing(code_sign_identity: "Apple Distribution")
     gym(
       scheme: 'CrunchyGIF',
       output_directory: 'build/appstore',
@@ -46,12 +59,7 @@ platform :mac do
       additional_cert_types: [ 'developer_id_installer' ]
     )
 
-    # START: magic that is mostly project specific
-    mapping = Actions.lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
-    specifier = mapping[ENV['MATCH_APP_IDENTIFIER']]
-    ENV['GYM_XCARGS'] = "CODE_SIGN_IDENTITY=\"Developer ID Application\" PROVISIONING_PROFILE_SPECIFIER=\"#{specifier}\""
-    # END: magic that is mostly project specific
-
+    fix_single_target_signing(code_sign_identity: "Developer ID Application")
     gym(
       scheme: 'CrunchyGIFDeveloperID',
       export_method: 'developer-id',
@@ -59,11 +67,13 @@ platform :mac do
       skip_package_pkg: true
     )
 
-    app_path = Dir.glob("../build/developerid/*.app").first
-    app_path = File.absolute_path(app_path)
-
     notarize(
-      package: app_path
+      package: develop_id_app_path
     )
+  end
+
+  private_lane :developer_id_app_path do
+    app_path = Dir.glob("../build/developerid/*.app").first
+    File.absolute_path(app_path)
   end
 end
