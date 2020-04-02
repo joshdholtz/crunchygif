@@ -2,7 +2,8 @@ source "https://rubygems.org"
 
 #gem "fastlane", "2.133.0"
 #gem "xcodeproj", :path => "../Xcodeproj"
-gem "fastlane", :path => "../fastlane/fastlane"
+#gem "fastlane", :path => "../fastlane/fastlane"
+gem "fastlane", git: "https://github.com/fastlane/fastlane.git", branch: "joshdholtz-appstore-connect-api-sigh"
 #gem "fastlane", :git => "https://github.com/fastlane/fastlane.git", :branch => "joshdholtz-post_for_testflight_review-new-api"
 #gem "fastlane", :git => "https://github.com/chronweigle/fastlane.git", :branch => "app-store-connect"
 # gem 'fastlane', :git => 'https://github.com/fastlane/fastlane.git', :branch => 'joshdholtz-remove-basename-from-itc-uploaded-ipa'

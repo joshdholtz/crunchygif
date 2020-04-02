@@ -21,11 +21,6 @@ or alternatively using `brew cask install fastlane`
 fastlane mac bump
 ```
 Bump version and build number and set/update changelog
-### mac clean
-```
-fastlane mac clean
-```
-Remove the build directory
 ### mac release
 ```
 fastlane mac release
