@@ -20,27 +20,27 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane mac bump
 ```
-
+Bump version and build number and set/update changelog
 ### mac clean
 ```
 fastlane mac clean
 ```
-
+Remove the build directory
 ### mac release
 ```
 fastlane mac release
 ```
-
+Tag, build App Store version and deliver, build developer id version and push to GitHub release
 ### mac release_app_store
 ```
 fastlane mac release_app_store
 ```
-
+Build to App Store and send to App Store
 ### mac release_developer_id
 ```
 fastlane mac release_developer_id
 ```
-
+Build for developer id and notarize
 
 ----
 

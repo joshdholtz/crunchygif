@@ -4,14 +4,17 @@ Dotenv.load '.env.secret'
 default_platform :mac
 
 platform :mac do
+  desc "Bump version and build number and set/update changelog"
   lane :bump do
     prompt_bump_and_changelog
   end
 
+  desc "Remove the build directory"
   lane :clean do
     FileUtils.rm_rf("../build")
   end
 
+  desc "Tag, build App Store version and deliver, build developer id version and push to GitHub release"
   lane :release do
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
@@ -37,6 +40,7 @@ platform :mac do
     )
   end
 
+  desc "Build to App Store and send to App Store"
   lane :release_app_store do
     match(
       type: 'appstore',
@@ -53,6 +57,7 @@ platform :mac do
     deliver
   end
 
+  desc "Build for developer id and notarize"
   lane :release_developer_id do
     match(
       type: 'developer_id',
@@ -73,6 +78,7 @@ platform :mac do
     )
   end
 
+  desc "Location of developer id app"
   private_lane :developer_id_app_path do
     app_path = Dir.glob("../build/developerid/*.app").first
     File.absolute_path(app_path)
