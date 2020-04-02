@@ -23,32 +23,42 @@ module Fastlane
         current_version = target.resolved_build_setting("MARKETING_VERSION", true).values.first
         current_build_number = target.resolved_build_setting("CURRENT_PROJECT_VERSION", true).values.first
 
-        # Prompt version
-        version = nil
-        loop do
-          defaulting = current_version.empty? ? "" : " (#{current_version})"
-          version = params[:version] || UI.input("Version#{defaulting}?")
-          version = current_version if version.empty?    
+        if !params[:read_only]
+          # Prompt version
+          version = nil
+          loop do
+            defaulting = current_version.empty? ? "" : " (#{current_version})"
+            version = params[:version] || UI.input("Version#{defaulting}?")
+            version = current_version if version.empty?    
 
-          break if version && !version.empty?
+            break if version && !version.empty?
+          end
+
+          # Prompt build number
+          build_number = params[:build_number] || UI.input("Build number (defaults to current timestamp)?")
+          build_number = Time.now.to_i if build_number.nil? || build_number.empty? 
+
+          # Set version and build number
+          target.build_configuration_list.set_setting('MARKETING_VERSION', version)
+          target.build_configuration_list.set_setting('CURRENT_PROJECT_VERSION', build_number)
+          xcproj.save
+
+          other_action.set_release_notes(path: release_notes_path(version), method: "vim")
+
+          Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_PATH] = Actions.lane_context[SharedValues::SET_RELEASE_NOTES_PATH]
+          Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_CONTENT] = Actions.lane_context[SharedValues::SET_RELEASE_NOTES_CONTENT]
+        else
+          version = current_version
+          build_number = current_build_number
+
+          other_action.get_release_notes(path: release_notes_path(version))
+          Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_PATH] = Actions.lane_context[SharedValues::GET_RELEASE_NOTES_PATH]
+          Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_CONTENT] = Actions.lane_context[SharedValues::GET_RELEASE_NOTES_CONTENT]
         end
-
-        # Prompt build number
-        build_number = params[:build_number] || UI.input("Build number (defaults to current timestamp)?")
-        build_number = Time.now.to_i if build_number.nil? || build_number.empty? 
-
-        # Set version and build number
-        target.build_configuration_list.set_setting('MARKETING_VERSION', version)
-        target.build_configuration_list.set_setting('CURRENT_PROJECT_VERSION', build_number)
-        xcproj.save
-
-        other_action.set_release_notes(path: release_notes_path(version), method: "vim")
 
         Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_VERSION] = version
         Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_BUILD_NUMBER] = build_number
 
-        Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_PATH] = Actions.lane_context[SharedValues::SET_RELEASE_NOTES_PATH]
-        Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_CONTENT] = Actions.lane_context[SharedValues::SET_RELEASE_NOTES_CONTENT]
 
         true
       end
@@ -91,6 +101,11 @@ module Fastlane
                                        env_name: "FL_PROMPT_BUMP_AND_CHANGELOG_BUILD_NUMBER",
                                        description: "Build number to update",
                                        optional: true),
+          FastlaneCore::ConfigItem.new(key: :read_only,
+                                       env_name: "FL_PROMPT_BUMP_AND_CHANGELOG_READ_ONLY",
+                                       description: "READ_ONLY",
+                                       default_value: false,
+                                       type: Boolean),
         ]
       end
 

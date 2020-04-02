@@ -6,9 +6,7 @@ end
 
 platform :mac do
   lane :bump do
-    prompt_bump_and_changelog(
-      target: "CrunchyGIF"
-    )
+    prompt_bump_and_changelog
   end
 
   lane :clean do
@@ -21,7 +19,14 @@ platform :mac do
 
     clean
 
-    add_git_tag(tag: new_version)
+    prompt_bump_and_changelog(read_only: true)
+    version = Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_VERSION]
+    changelog = Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_CONTENT]
+
+    puts "version: #{version}"
+    puts "changelog: #{changelog}"
+
+    add_git_tag(tag: get_version_number)
     push_get_tags
 
     release_app_store
