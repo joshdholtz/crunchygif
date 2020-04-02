@@ -1,54 +1,79 @@
+default_platform :mac
+
+after_all do
+  debug
+end
+
 platform :mac do
-  lane :omg do
-    bump
-    build
-    release
-  end
-
   lane :bump do
-    build_number = sh("date +%s").strip
-    project_path = '../CrunchyGIF.xcodeproj'
-
-    fastlane_require 'xcodeproj'
-    xcproj = Xcodeproj::Project.open(project_path)
-
-    xcproj.targets.each do |target|
-      target.build_configuration_list.set_setting('CURRENT_PROJECT_VERSION', build_number)
-    end
-    xcproj.save
+    prompt_bump_and_changelog(
+      target: "CrunchyGIF"
+    )
   end
 
-  lane :build do
-    gym(
-      scheme: 'CrunchyGIF',
-      export_method: 'app-store',
-
-      export_options: {
-        method: "app-store",
-        provisioningProfiles: {
-          "com.joshholtz.CrunchyGIF": "CrunchyGIF AppStore"
-        }
-      },
-    )
+  lane :clean do
+    FileUtils.rm_rf("../build")
   end
 
   lane :release do
-    deliver(
-      username: 'me@joshholtz.com',
-      dev_portal_team_name: 'Josh Holtz',
-      team_name: 'Josh Holtz',
+    ensure_git_status_clean
+    ensure_git_branch(branch: 'master')
 
-      app_identifier: 'com.joshholtz.CrunchyGIF',
-      
-      ignore_language_directory_validation: true,
-      run_precheck_before_submit: false,
+    clean
 
-      # submit_for_review: true,
-      # reject_if_possible: true,
+    add_git_tag(tag: new_version)
 
-      skip_metadata: true,
-      skip_screenshots: true,
-      skip_binary_upload: false
+    release_app_store
+    release_developer_id
+
+    version = last_git_tag
+    github_release = set_github_release(
+      name: version,
+      tag_name: version,
+      description: options[:description],
+      commitish: "master",
+      upload_assets: [developer_id_app_path]
     )
+  end
+
+  lane :release_app_store do
+    match(
+      type: 'appstore',
+      additional_cert_types: [ 'mac_installer_distribution' ]
+    )
+
+    fix_single_target_signing(code_sign_identity: "Apple Distribution")
+    gym(
+      scheme: 'CrunchyGIF',
+      output_directory: 'build/appstore',
+      export_method: 'app-store',
+    )
+
+    deliver
+  end
+
+  lane :release_developer_id do
+    match(
+      type: 'developer_id',
+      git_branch: 'last-good-developer_id',
+      additional_cert_types: [ 'developer_id_installer' ]
+    )
+
+    fix_single_target_signing(code_sign_identity: "Developer ID Application")
+    gym(
+      scheme: 'CrunchyGIFDeveloperID',
+      export_method: 'developer-id',
+      output_directory: 'build/developerid',
+      skip_package_pkg: true
+    )
+
+    notarize(
+      package: develop_id_app_path
+    )
+  end
+
+  private_lane :developer_id_app_path do
+    app_path = Dir.glob("../build/developerid/*.app").first
+    File.absolute_path(app_path)
   end
 end
