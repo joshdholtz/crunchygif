@@ -80,7 +80,7 @@ platform :mac do
   end
 
   desc "Remove the build directory"
-  private_lane :clean do
+  lane :clean do
     FileUtils.rm_rf("../build")
   end
 

@@ -36,6 +36,11 @@ Build to App Store and send to App Store
 fastlane mac release_developer_id
 ```
 Build for developer id and notarize
+### mac clean
+```
+fastlane mac clean
+```
+Remove the build directory
 
 ----
 
