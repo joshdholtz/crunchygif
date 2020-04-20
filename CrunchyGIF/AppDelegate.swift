@@ -19,7 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-            button.action = #selector(togglePopover(_:))
         }
         popover.contentViewController = dashboardViewController
         
@@ -37,6 +36,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 // Delete folder of mov
                 try? FileManager.default.removeItem(at: path.deletingLastPathComponent())
             }
+        }
+
+        NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { (event) -> NSEvent? in
+            if event.window == self.statusItem.button?.window {
+                self.togglePopover(self.statusItem.button)
+                return nil
+            }
+            return event
         }
         
         showPopover(sender: nil)
@@ -57,12 +64,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func showPopover(sender: Any?) {
         if let button = statusItem.button {
+            button.isHighlighted = true
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
         }
     }
     
     func closePopover(sender: Any?) {
+        statusItem.button?.isHighlighted = false
         popover.performClose(sender)
     }
 }
