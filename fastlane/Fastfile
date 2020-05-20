@@ -23,13 +23,13 @@ platform :mac do
     version = Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_VERSION]
     changelog = Actions.lane_context[SharedValues::PROMPT_BUMP_AND_CHANGELOG_CHANGELOG_CONTENT]
 
-    # Add git tag
-    add_git_tag(tag: get_version_number)
-    push_git_tags
-
     # Build App Store and Developer ID versions
     release_app_store
     release_developer_id
+
+    # Add git tag
+    add_git_tag(tag: get_version_number)
+    push_git_tags
 
     # Create GitHub release and upload notarized Developer ID binary
     version = last_git_tag
