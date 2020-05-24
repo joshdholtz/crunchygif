@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="00: default_platform" time="0.005271">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: ensure_git_status_clean" time="0.00952">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: ensure_git_branch" time="0.006487">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: Switch to mac clean lane" time="0.00113">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: prompt_bump_and_changelog" time="0.053928">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: Switch to mac release_app_store lane" time="0.001081">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: match" time="5.604746">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: fix_single_target_signing" time="0.000957">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: gym" time="20.952409">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: deliver" time="41.704906">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: Switch to mac release_developer_id lane" time="0.00093">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: match" time="5.009123">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: fix_single_target_signing" time="0.001127">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="13: gym" time="13.969958">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="14: Switch to mac developer_id_app_path lane" time="0.001125">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="15: notarize" time="119.785659">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="16: get_version_number" time="0.012796">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="17: add_git_tag" time="0.020986">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="18: push_git_tags" time="3.30983">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="19: last_git_tag" time="0.013586">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="20: Switch to mac developer_id_app_path lane" time="0.001092">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="21: set_github_release" time="14.816221">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

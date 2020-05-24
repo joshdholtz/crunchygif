@@ -1,0 +1,1023 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0336EE96247829B80093B94B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336EE95247829B80093B94B /* AppDelegate.swift */; };
+		0336EE98247829B80093B94B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336EE97247829B80093B94B /* SceneDelegate.swift */; };
+		0336EE9A247829B80093B94B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336EE99247829B80093B94B /* ContentView.swift */; };
+		0336EE9C247829B90093B94B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0336EE9B247829B90093B94B /* Assets.xcassets */; };
+		0336EE9F247829B90093B94B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0336EE9E247829B90093B94B /* Preview Assets.xcassets */; };
+		0336EEA2247829B90093B94B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0336EEA0247829B90093B94B /* LaunchScreen.storyboard */; };
+		0336EEAD247829B90093B94B /* CrunchyGIFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336EEAC247829B90093B94B /* CrunchyGIFTests.swift */; };
+		0336EEB8247829B90093B94B /* CrunchyGIFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336EEB7247829B90093B94B /* CrunchyGIFUITests.swift */; };
+		03752E8524785E2C007DA4C1 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752E8424785E2C007DA4C1 /* ShareViewController.swift */; };
+		03752E8824785E2C007DA4C1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03752E8624785E2C007DA4C1 /* MainInterface.storyboard */; };
+		03752E8C24785E2C007DA4C1 /* Share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 03752E8224785E2C007DA4C1 /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0376B1DA2478D1F900458E4D /* GifOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE75F7247882BE00BA8FBD /* GifOperation.swift */; };
+		0376B1DB2478D1FD00458E4D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE75F9247882BE00BA8FBD /* AsyncOperation.swift */; };
+		0376B1DF2479A34500458E4D /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B1DE2479A34500458E4D /* Notification+Extension.swift */; };
+		0376B1E12479B03A00458E4D /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B1E02479B03A00458E4D /* Array+Extension.swift */; };
+		03CE75FA247882BE00BA8FBD /* GifOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE75F7247882BE00BA8FBD /* GifOperation.swift */; };
+		03CE75FC247882BE00BA8FBD /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE75F9247882BE00BA8FBD /* AsyncOperation.swift */; };
+		2A143AE7754B59F6B2FD3F8F /* Pods_CrunchyGIFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EEC9DA2AAC975537FD8060 /* Pods_CrunchyGIFTests.framework */; };
+		5570C35A2C2A14605E4D3886 /* Pods_CrunchyGIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF36317D564072EF1A22037 /* Pods_CrunchyGIF.framework */; };
+		8230F557476D3C48A3B6BD08 /* Pods_CrunchyGIF_CrunchyGIFUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6D34ED1984A3DB2168CC95 /* Pods_CrunchyGIF_CrunchyGIFUITests.framework */; };
+		AF5B322BDD67ABD9E2450A4B /* Pods_Share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D83B8F1EA255A82AD9F0726 /* Pods_Share.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0336EEA9247829B90093B94B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0336EE8A247829B80093B94B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0336EE91247829B80093B94B;
+			remoteInfo = CrunchyGIF;
+		};
+		0336EEB4247829B90093B94B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0336EE8A247829B80093B94B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0336EE91247829B80093B94B;
+			remoteInfo = CrunchyGIF;
+		};
+		03752E8A24785E2C007DA4C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0336EE8A247829B80093B94B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03752E8124785E2C007DA4C1;
+			remoteInfo = Share;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		03752E8D24785E2C007DA4C1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				03752E8C24785E2C007DA4C1 /* Share.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0336EE92247829B80093B94B /* CrunchyGIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrunchyGIF.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0336EE95247829B80093B94B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0336EE97247829B80093B94B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0336EE99247829B80093B94B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0336EE9B247829B90093B94B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0336EE9E247829B90093B94B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0336EEA1247829B90093B94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0336EEA3247829B90093B94B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0336EEA8247829B90093B94B /* CrunchyGIFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrunchyGIFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0336EEAC247829B90093B94B /* CrunchyGIFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrunchyGIFTests.swift; sourceTree = "<group>"; };
+		0336EEAE247829B90093B94B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0336EEB3247829B90093B94B /* CrunchyGIFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrunchyGIFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0336EEB7247829B90093B94B /* CrunchyGIFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrunchyGIFUITests.swift; sourceTree = "<group>"; };
+		0336EEB9247829B90093B94B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03752E8224785E2C007DA4C1 /* Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		03752E8424785E2C007DA4C1 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		03752E8724785E2C007DA4C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		03752E8924785E2C007DA4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0376B1D724788D1F00458E4D /* CrunchyGIF-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrunchyGIF-Bridging-Header.h"; sourceTree = "<group>"; };
+		0376B1DC247962F400458E4D /* ShareRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareRelease.entitlements; sourceTree = "<group>"; };
+		0376B1DD2479632300458E4D /* CrunchyGIFRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CrunchyGIFRelease.entitlements; sourceTree = "<group>"; };
+		0376B1DE2479A34500458E4D /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		0376B1E02479B03A00458E4D /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		03CE75F7247882BE00BA8FBD /* GifOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifOperation.swift; sourceTree = "<group>"; };
+		03CE75F9247882BE00BA8FBD /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		1A1CFDD3987E934EB6A6334E /* Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1D83B8F1EA255A82AD9F0726 /* Pods_Share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D0C587F660829C0D66AC972 /* Pods-Share.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Share.release.xcconfig"; path = "Target Support Files/Pods-Share/Pods-Share.release.xcconfig"; sourceTree = "<group>"; };
+		5FF3393EFF76ACE70707A40C /* Pods-CrunchyGIF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF.release.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF.release.xcconfig"; sourceTree = "<group>"; };
+		6B66990944CE56193D0A036B /* Pods-Share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Share.debug.xcconfig"; path = "Target Support Files/Pods-Share/Pods-Share.debug.xcconfig"; sourceTree = "<group>"; };
+		7AB8013ECF7E0659AC4078DD /* Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig"; sourceTree = "<group>"; };
+		82EEC9DA2AAC975537FD8060 /* Pods_CrunchyGIFTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrunchyGIFTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB6D34ED1984A3DB2168CC95 /* Pods_CrunchyGIF_CrunchyGIFUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrunchyGIF_CrunchyGIFUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C96B46948C87297536579916 /* Pods-CrunchyGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF.debug.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF.debug.xcconfig"; sourceTree = "<group>"; };
+		DBF36317D564072EF1A22037 /* Pods_CrunchyGIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrunchyGIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0F349DF4B996FBA3397408F /* Pods-CrunchyGIFTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIFTests.debug.xcconfig"; path = "Target Support Files/Pods-CrunchyGIFTests/Pods-CrunchyGIFTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F86A2CEDAA64C30A2142411E /* Pods-CrunchyGIFTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIFTests.release.xcconfig"; path = "Target Support Files/Pods-CrunchyGIFTests/Pods-CrunchyGIFTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0336EE8F247829B80093B94B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5570C35A2C2A14605E4D3886 /* Pods_CrunchyGIF.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0336EEA5247829B90093B94B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A143AE7754B59F6B2FD3F8F /* Pods_CrunchyGIFTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0336EEB0247829B90093B94B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8230F557476D3C48A3B6BD08 /* Pods_CrunchyGIF_CrunchyGIFUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03752E7F24785E2C007DA4C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF5B322BDD67ABD9E2450A4B /* Pods_Share.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0336EE89247829B80093B94B = {
+			isa = PBXGroup;
+			children = (
+				0336EE94247829B80093B94B /* CrunchyGIF */,
+				0336EEAB247829B90093B94B /* CrunchyGIFTests */,
+				0336EEB6247829B90093B94B /* CrunchyGIFUITests */,
+				03752E8324785E2C007DA4C1 /* Share */,
+				0336EE93247829B80093B94B /* Products */,
+				8D6FFFC555863DCC8738466E /* Pods */,
+				5F37177F10C13228CB27AFFD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0336EE93247829B80093B94B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0336EE92247829B80093B94B /* CrunchyGIF.app */,
+				0336EEA8247829B90093B94B /* CrunchyGIFTests.xctest */,
+				0336EEB3247829B90093B94B /* CrunchyGIFUITests.xctest */,
+				03752E8224785E2C007DA4C1 /* Share.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0336EE94247829B80093B94B /* CrunchyGIF */ = {
+			isa = PBXGroup;
+			children = (
+				0376B1DD2479632300458E4D /* CrunchyGIFRelease.entitlements */,
+				03CE75F6247882A600BA8FBD /* Helpers */,
+				0336EE95247829B80093B94B /* AppDelegate.swift */,
+				0336EE97247829B80093B94B /* SceneDelegate.swift */,
+				0336EE99247829B80093B94B /* ContentView.swift */,
+				0336EE9B247829B90093B94B /* Assets.xcassets */,
+				0336EEA0247829B90093B94B /* LaunchScreen.storyboard */,
+				0336EEA3247829B90093B94B /* Info.plist */,
+				0336EE9D247829B90093B94B /* Preview Content */,
+				0376B1D724788D1F00458E4D /* CrunchyGIF-Bridging-Header.h */,
+			);
+			path = CrunchyGIF;
+			sourceTree = "<group>";
+		};
+		0336EE9D247829B90093B94B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0336EE9E247829B90093B94B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0336EEAB247829B90093B94B /* CrunchyGIFTests */ = {
+			isa = PBXGroup;
+			children = (
+				0336EEAC247829B90093B94B /* CrunchyGIFTests.swift */,
+				0336EEAE247829B90093B94B /* Info.plist */,
+			);
+			path = CrunchyGIFTests;
+			sourceTree = "<group>";
+		};
+		0336EEB6247829B90093B94B /* CrunchyGIFUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0336EEB7247829B90093B94B /* CrunchyGIFUITests.swift */,
+				0336EEB9247829B90093B94B /* Info.plist */,
+			);
+			path = CrunchyGIFUITests;
+			sourceTree = "<group>";
+		};
+		03752E8324785E2C007DA4C1 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				0376B1DC247962F400458E4D /* ShareRelease.entitlements */,
+				03752E8424785E2C007DA4C1 /* ShareViewController.swift */,
+				03752E8624785E2C007DA4C1 /* MainInterface.storyboard */,
+				03752E8924785E2C007DA4C1 /* Info.plist */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		03CE75F6247882A600BA8FBD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03CE75F9247882BE00BA8FBD /* AsyncOperation.swift */,
+				03CE75F7247882BE00BA8FBD /* GifOperation.swift */,
+				0376B1DE2479A34500458E4D /* Notification+Extension.swift */,
+				0376B1E02479B03A00458E4D /* Array+Extension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5F37177F10C13228CB27AFFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBF36317D564072EF1A22037 /* Pods_CrunchyGIF.framework */,
+				AB6D34ED1984A3DB2168CC95 /* Pods_CrunchyGIF_CrunchyGIFUITests.framework */,
+				82EEC9DA2AAC975537FD8060 /* Pods_CrunchyGIFTests.framework */,
+				1D83B8F1EA255A82AD9F0726 /* Pods_Share.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D6FFFC555863DCC8738466E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C96B46948C87297536579916 /* Pods-CrunchyGIF.debug.xcconfig */,
+				5FF3393EFF76ACE70707A40C /* Pods-CrunchyGIF.release.xcconfig */,
+				1A1CFDD3987E934EB6A6334E /* Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig */,
+				7AB8013ECF7E0659AC4078DD /* Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig */,
+				E0F349DF4B996FBA3397408F /* Pods-CrunchyGIFTests.debug.xcconfig */,
+				F86A2CEDAA64C30A2142411E /* Pods-CrunchyGIFTests.release.xcconfig */,
+				6B66990944CE56193D0A036B /* Pods-Share.debug.xcconfig */,
+				3D0C587F660829C0D66AC972 /* Pods-Share.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0336EE91247829B80093B94B /* CrunchyGIF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0336EEBC247829B90093B94B /* Build configuration list for PBXNativeTarget "CrunchyGIF" */;
+			buildPhases = (
+				4DC46AC480DD7B10ED7D680E /* [CP] Check Pods Manifest.lock */,
+				9AA79297A0BBD37405B6FEE9 /* [CP] Prepare Artifacts */,
+				0336EE8E247829B80093B94B /* Sources */,
+				0336EE8F247829B80093B94B /* Frameworks */,
+				0336EE90247829B80093B94B /* Resources */,
+				03752E8D24785E2C007DA4C1 /* Embed App Extensions */,
+				D5899CAE7DF369E9223F6B23 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03752E8B24785E2C007DA4C1 /* PBXTargetDependency */,
+			);
+			name = CrunchyGIF;
+			productName = CrunchyGIF;
+			productReference = 0336EE92247829B80093B94B /* CrunchyGIF.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0336EEA7247829B90093B94B /* CrunchyGIFTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0336EEBF247829B90093B94B /* Build configuration list for PBXNativeTarget "CrunchyGIFTests" */;
+			buildPhases = (
+				0290982E7349987BD4E480E5 /* [CP] Check Pods Manifest.lock */,
+				0336EEA4247829B90093B94B /* Sources */,
+				0336EEA5247829B90093B94B /* Frameworks */,
+				0336EEA6247829B90093B94B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0336EEAA247829B90093B94B /* PBXTargetDependency */,
+			);
+			name = CrunchyGIFTests;
+			productName = CrunchyGIFTests;
+			productReference = 0336EEA8247829B90093B94B /* CrunchyGIFTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0336EEB2247829B90093B94B /* CrunchyGIFUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0336EEC2247829B90093B94B /* Build configuration list for PBXNativeTarget "CrunchyGIFUITests" */;
+			buildPhases = (
+				C10F6DEF0FD6434FD1D4AD60 /* [CP] Check Pods Manifest.lock */,
+				57E97FEACD6CD6194AF929F9 /* [CP] Prepare Artifacts */,
+				0336EEAF247829B90093B94B /* Sources */,
+				0336EEB0247829B90093B94B /* Frameworks */,
+				0336EEB1247829B90093B94B /* Resources */,
+				DB0BD875DF89EF4B6256B80C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0336EEB5247829B90093B94B /* PBXTargetDependency */,
+			);
+			name = CrunchyGIFUITests;
+			productName = CrunchyGIFUITests;
+			productReference = 0336EEB3247829B90093B94B /* CrunchyGIFUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		03752E8124785E2C007DA4C1 /* Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03752E9024785E2C007DA4C1 /* Build configuration list for PBXNativeTarget "Share" */;
+			buildPhases = (
+				C92E764F36931956D6C89A8B /* [CP] Check Pods Manifest.lock */,
+				03752E7E24785E2C007DA4C1 /* Sources */,
+				03752E7F24785E2C007DA4C1 /* Frameworks */,
+				03752E8024785E2C007DA4C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Share;
+			productName = Share;
+			productReference = 03752E8224785E2C007DA4C1 /* Share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0336EE8A247829B80093B94B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Josh Holtz";
+				TargetAttributes = {
+					0336EE91247829B80093B94B = {
+						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1150;
+					};
+					0336EEA7247829B90093B94B = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 0336EE91247829B80093B94B;
+					};
+					0336EEB2247829B90093B94B = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 0336EE91247829B80093B94B;
+					};
+					03752E8124785E2C007DA4C1 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 0336EE8D247829B80093B94B /* Build configuration list for PBXProject "CrunchyGIF" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0336EE89247829B80093B94B;
+			productRefGroup = 0336EE93247829B80093B94B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0336EE91247829B80093B94B /* CrunchyGIF */,
+				0336EEA7247829B90093B94B /* CrunchyGIFTests */,
+				0336EEB2247829B90093B94B /* CrunchyGIFUITests */,
+				03752E8124785E2C007DA4C1 /* Share */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0336EE90247829B80093B94B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0336EEA2247829B90093B94B /* LaunchScreen.storyboard in Resources */,
+				0336EE9F247829B90093B94B /* Preview Assets.xcassets in Resources */,
+				0336EE9C247829B90093B94B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0336EEA6247829B90093B94B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0336EEB1247829B90093B94B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03752E8024785E2C007DA4C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03752E8824785E2C007DA4C1 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0290982E7349987BD4E480E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CrunchyGIFTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4DC46AC480DD7B10ED7D680E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CrunchyGIF-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57E97FEACD6CD6194AF929F9 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AA79297A0BBD37405B6FEE9 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C10F6DEF0FD6434FD1D4AD60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CrunchyGIF-CrunchyGIFUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C92E764F36931956D6C89A8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Share-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5899CAE7DF369E9223F6B23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB0BD875DF89EF4B6256B80C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0336EE8E247829B80093B94B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03CE75FA247882BE00BA8FBD /* GifOperation.swift in Sources */,
+				0336EE96247829B80093B94B /* AppDelegate.swift in Sources */,
+				0376B1DF2479A34500458E4D /* Notification+Extension.swift in Sources */,
+				0336EE98247829B80093B94B /* SceneDelegate.swift in Sources */,
+				0376B1E12479B03A00458E4D /* Array+Extension.swift in Sources */,
+				03CE75FC247882BE00BA8FBD /* AsyncOperation.swift in Sources */,
+				0336EE9A247829B80093B94B /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0336EEA4247829B90093B94B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0336EEAD247829B90093B94B /* CrunchyGIFTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0336EEAF247829B90093B94B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0336EEB8247829B90093B94B /* CrunchyGIFUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03752E7E24785E2C007DA4C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0376B1DA2478D1F900458E4D /* GifOperation.swift in Sources */,
+				0376B1DB2478D1FD00458E4D /* AsyncOperation.swift in Sources */,
+				03752E8524785E2C007DA4C1 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0336EEAA247829B90093B94B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0336EE91247829B80093B94B /* CrunchyGIF */;
+			targetProxy = 0336EEA9247829B90093B94B /* PBXContainerItemProxy */;
+		};
+		0336EEB5247829B90093B94B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0336EE91247829B80093B94B /* CrunchyGIF */;
+			targetProxy = 0336EEB4247829B90093B94B /* PBXContainerItemProxy */;
+		};
+		03752E8B24785E2C007DA4C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03752E8124785E2C007DA4C1 /* Share */;
+			targetProxy = 03752E8A24785E2C007DA4C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0336EEA0247829B90093B94B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0336EEA1247829B90093B94B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		03752E8624785E2C007DA4C1 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03752E8724785E2C007DA4C1 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0336EEBA247829B90093B94B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0336EEBB247829B90093B94B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0336EEBD247829B90093B94B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C96B46948C87297536579916 /* Pods-CrunchyGIF.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CrunchyGIF/CrunchyGIFRelease.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CrunchyGIF/Preview Content\"";
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CrunchyGIF/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CrunchyGIF/CrunchyGIF-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0336EEBE247829B90093B94B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FF3393EFF76ACE70707A40C /* Pods-CrunchyGIF.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CrunchyGIF/CrunchyGIFRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CrunchyGIF/Preview Content\"";
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CrunchyGIF/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CrunchyGIF/CrunchyGIF-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0336EEC0247829B90093B94B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0F349DF4B996FBA3397408F /* Pods-CrunchyGIFTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				INFOPLIST_FILE = CrunchyGIFTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIFTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CrunchyGIF.app/CrunchyGIF";
+			};
+			name = Debug;
+		};
+		0336EEC1247829B90093B94B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F86A2CEDAA64C30A2142411E /* Pods-CrunchyGIFTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				INFOPLIST_FILE = CrunchyGIFTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIFTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CrunchyGIF.app/CrunchyGIF";
+			};
+			name = Release;
+		};
+		0336EEC3247829B90093B94B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A1CFDD3987E934EB6A6334E /* Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				INFOPLIST_FILE = CrunchyGIFUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIFUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CrunchyGIF;
+			};
+			name = Debug;
+		};
+		0336EEC4247829B90093B94B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AB8013ECF7E0659AC4078DD /* Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				INFOPLIST_FILE = CrunchyGIFUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIFUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CrunchyGIF;
+			};
+			name = Release;
+		};
+		03752E8E24785E2C007DA4C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B66990944CE56193D0A036B /* Pods-Share.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Share/ShareRelease.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				INFOPLIST_FILE = Share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CrunchyGIF/CrunchyGIF-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03752E8F24785E2C007DA4C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D0C587F660829C0D66AC972 /* Pods-Share.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Share/ShareRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972KS36P2U;
+				INFOPLIST_FILE = Share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CrunchyGIF/CrunchyGIF-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0336EE8D247829B80093B94B /* Build configuration list for PBXProject "CrunchyGIF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0336EEBA247829B90093B94B /* Debug */,
+				0336EEBB247829B90093B94B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0336EEBC247829B90093B94B /* Build configuration list for PBXNativeTarget "CrunchyGIF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0336EEBD247829B90093B94B /* Debug */,
+				0336EEBE247829B90093B94B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0336EEBF247829B90093B94B /* Build configuration list for PBXNativeTarget "CrunchyGIFTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0336EEC0247829B90093B94B /* Debug */,
+				0336EEC1247829B90093B94B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0336EEC2247829B90093B94B /* Build configuration list for PBXNativeTarget "CrunchyGIFUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0336EEC3247829B90093B94B /* Debug */,
+				0336EEC4247829B90093B94B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03752E9024785E2C007DA4C1 /* Build configuration list for PBXNativeTarget "Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03752E8E24785E2C007DA4C1 /* Debug */,
+				03752E8F24785E2C007DA4C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0336EE8A247829B80093B94B /* Project object */;
+}

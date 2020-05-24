@@ -1,0 +1,6 @@
+framework module Pods_CrunchyGIF {
+  umbrella header "Pods-CrunchyGIF-umbrella.h"
+
+  export *
+  module * { export * }
+}
