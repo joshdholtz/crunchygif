@@ -30,3 +30,11 @@ target 'Share' do
   # Pods for Share
   pod 'mobile-ffmpeg-full', '~> 4.3.2'
 end
+
+target 'SiriShortcut' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Share
+  pod 'mobile-ffmpeg-full', '~> 4.3.2'
+end

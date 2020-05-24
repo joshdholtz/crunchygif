@@ -8,6 +8,8 @@
 
 import Foundation
 
+import mobileffmpeg
+
 class GifOperation: AsynchOperation {
     
     private let path: URL
@@ -91,14 +93,5 @@ class GifOperation: AsynchOperation {
         print("rc2: \(rc2)")
         
         done()
-                
-//        processMeta = GifTools.createFFMPEGProcess(arguments: argumentsPalette) { [unowned self] (terminated) in
-//            print("terminated1: \(terminated)")
-//
-//            self.processMeta = GifTools.createFFMPEGProcess(arguments: argumentsWithPalette) { (terminated) in
-//                print("terminated2: \(terminated)")
-//                done()
-//            }
-//        }
     }
 }
