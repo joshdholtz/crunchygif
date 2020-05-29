@@ -25,6 +25,13 @@
 		0376B2102479F4F000458E4D /* SiriShortcut.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0376B2092479F4F000458E4D /* SiriShortcut.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0376B21B247A079B00458E4D /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0376B2142479F50800458E4D /* Intents.intentdefinition */; };
 		0376B21C247A07D200458E4D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE75F9247882BE00BA8FBD /* AsyncOperation.swift */; };
+		0376B22E247A12E300458E4D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0376B22D247A12E300458E4D /* CoreVideo.framework */; };
+		0376B231247C114D00458E4D /* ShareHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B230247C114D00458E4D /* ShareHostingViewController.swift */; };
+		0376B233247D76BA00458E4D /* PrepareConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B232247D76BA00458E4D /* PrepareConvertView.swift */; };
+		0376B234247D8A6D00458E4D /* PrepareConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B232247D76BA00458E4D /* PrepareConvertView.swift */; };
+		0376B235247D90B500458E4D /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B1DE2479A34500458E4D /* Notification+Extension.swift */; };
+		0376B237247DC83C00458E4D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B236247DC83C00458E4D /* Color+Extension.swift */; };
+		0376B238247DC83C00458E4D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376B236247DC83C00458E4D /* Color+Extension.swift */; };
 		03CE75FA247882BE00BA8FBD /* GifOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE75F7247882BE00BA8FBD /* GifOperation.swift */; };
 		03CE75FC247882BE00BA8FBD /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE75F9247882BE00BA8FBD /* AsyncOperation.swift */; };
 		2A143AE7754B59F6B2FD3F8F /* Pods_CrunchyGIFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EEC9DA2AAC975537FD8060 /* Pods_CrunchyGIFTests.framework */; };
@@ -109,17 +116,24 @@
 		0376B20B2479F4F000458E4D /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		0376B20D2479F4F000458E4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0376B2142479F50800458E4D /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		0376B22D247A12E300458E4D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		0376B230247C114D00458E4D /* ShareHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHostingViewController.swift; sourceTree = "<group>"; };
+		0376B232247D76BA00458E4D /* PrepareConvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareConvertView.swift; sourceTree = "<group>"; };
+		0376B236247DC83C00458E4D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		03CE75F7247882BE00BA8FBD /* GifOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifOperation.swift; sourceTree = "<group>"; };
 		03CE75F9247882BE00BA8FBD /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		06F8FED65E44CE0DF7DB5B24 /* Pods-SiriShortcut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiriShortcut.debug.xcconfig"; path = "Target Support Files/Pods-SiriShortcut/Pods-SiriShortcut.debug.xcconfig"; sourceTree = "<group>"; };
 		1A1CFDD3987E934EB6A6334E /* Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D83B8F1EA255A82AD9F0726 /* Pods_Share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D0C587F660829C0D66AC972 /* Pods-Share.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Share.release.xcconfig"; path = "Target Support Files/Pods-Share/Pods-Share.release.xcconfig"; sourceTree = "<group>"; };
+		58DF20DF10305B988A90F31F /* Pods_TestSiriThing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSiriThing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF3393EFF76ACE70707A40C /* Pods-CrunchyGIF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF.release.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF.release.xcconfig"; sourceTree = "<group>"; };
 		6B66990944CE56193D0A036B /* Pods-Share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Share.debug.xcconfig"; path = "Target Support Files/Pods-Share/Pods-Share.debug.xcconfig"; sourceTree = "<group>"; };
 		7AB8013ECF7E0659AC4078DD /* Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF-CrunchyGIFUITests/Pods-CrunchyGIF-CrunchyGIFUITests.release.xcconfig"; sourceTree = "<group>"; };
 		82EEC9DA2AAC975537FD8060 /* Pods_CrunchyGIFTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrunchyGIFTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8303D5F6B9704A23343380E4 /* Pods-SiriShortcut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiriShortcut.release.xcconfig"; path = "Target Support Files/Pods-SiriShortcut/Pods-SiriShortcut.release.xcconfig"; sourceTree = "<group>"; };
+		83738B9065BACC8A8F55F4CE /* Pods-TestSiriThing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSiriThing.release.xcconfig"; path = "Target Support Files/Pods-TestSiriThing/Pods-TestSiriThing.release.xcconfig"; sourceTree = "<group>"; };
+		91B43508C2A08BFED5CA380B /* Pods-TestSiriThing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSiriThing.debug.xcconfig"; path = "Target Support Files/Pods-TestSiriThing/Pods-TestSiriThing.debug.xcconfig"; sourceTree = "<group>"; };
 		AB6D34ED1984A3DB2168CC95 /* Pods_CrunchyGIF_CrunchyGIFUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrunchyGIF_CrunchyGIFUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96B46948C87297536579916 /* Pods-CrunchyGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrunchyGIF.debug.xcconfig"; path = "Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF36317D564072EF1A22037 /* Pods_CrunchyGIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrunchyGIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA82018EB9F2D6ABEF621B92 /* Pods_SiriShortcut.framework in Frameworks */,
+				0376B22E247A12E300458E4D /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +221,7 @@
 				0336EE95247829B80093B94B /* AppDelegate.swift */,
 				0336EE97247829B80093B94B /* SceneDelegate.swift */,
 				0336EE99247829B80093B94B /* ContentView.swift */,
+				0376B232247D76BA00458E4D /* PrepareConvertView.swift */,
 				0336EE9B247829B90093B94B /* Assets.xcassets */,
 				0336EEA0247829B90093B94B /* LaunchScreen.storyboard */,
 				0336EEA3247829B90093B94B /* Info.plist */,
@@ -248,6 +264,7 @@
 				03752E8424785E2C007DA4C1 /* ShareViewController.swift */,
 				03752E8624785E2C007DA4C1 /* MainInterface.storyboard */,
 				03752E8924785E2C007DA4C1 /* Info.plist */,
+				0376B230247C114D00458E4D /* ShareHostingViewController.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -269,6 +286,7 @@
 				03CE75F7247882BE00BA8FBD /* GifOperation.swift */,
 				0376B1DE2479A34500458E4D /* Notification+Extension.swift */,
 				0376B1E02479B03A00458E4D /* Array+Extension.swift */,
+				0376B236247DC83C00458E4D /* Color+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -276,12 +294,14 @@
 		5F37177F10C13228CB27AFFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0376B22D247A12E300458E4D /* CoreVideo.framework */,
 				DBF36317D564072EF1A22037 /* Pods_CrunchyGIF.framework */,
 				AB6D34ED1984A3DB2168CC95 /* Pods_CrunchyGIF_CrunchyGIFUITests.framework */,
 				82EEC9DA2AAC975537FD8060 /* Pods_CrunchyGIFTests.framework */,
 				1D83B8F1EA255A82AD9F0726 /* Pods_Share.framework */,
 				0376B1E72479F40000458E4D /* IntentsUI.framework */,
 				E0D4238F362DDF58844287E3 /* Pods_SiriShortcut.framework */,
+				58DF20DF10305B988A90F31F /* Pods_TestSiriThing.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -299,6 +319,8 @@
 				3D0C587F660829C0D66AC972 /* Pods-Share.release.xcconfig */,
 				06F8FED65E44CE0DF7DB5B24 /* Pods-SiriShortcut.debug.xcconfig */,
 				8303D5F6B9704A23343380E4 /* Pods-SiriShortcut.release.xcconfig */,
+				91B43508C2A08BFED5CA380B /* Pods-TestSiriThing.debug.xcconfig */,
+				83738B9065BACC8A8F55F4CE /* Pods-TestSiriThing.release.xcconfig */,
 			);
 			name = Pods;
 			path = ../Pods;
@@ -687,11 +709,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				03CE75FA247882BE00BA8FBD /* GifOperation.swift in Sources */,
+				0376B237247DC83C00458E4D /* Color+Extension.swift in Sources */,
 				0336EE96247829B80093B94B /* AppDelegate.swift in Sources */,
 				0376B1DF2479A34500458E4D /* Notification+Extension.swift in Sources */,
 				0336EE98247829B80093B94B /* SceneDelegate.swift in Sources */,
 				0376B1E12479B03A00458E4D /* Array+Extension.swift in Sources */,
 				03CE75FC247882BE00BA8FBD /* AsyncOperation.swift in Sources */,
+				0376B233247D76BA00458E4D /* PrepareConvertView.swift in Sources */,
 				0336EE9A247829B80093B94B /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,7 +741,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0376B1DA2478D1F900458E4D /* GifOperation.swift in Sources */,
+				0376B238247DC83C00458E4D /* Color+Extension.swift in Sources */,
 				0376B21C247A07D200458E4D /* AsyncOperation.swift in Sources */,
+				0376B235247D90B500458E4D /* Notification+Extension.swift in Sources */,
+				0376B231247C114D00458E4D /* ShareHostingViewController.swift in Sources */,
+				0376B234247D8A6D00458E4D /* PrepareConvertView.swift in Sources */,
 				03752E8524785E2C007DA4C1 /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -903,6 +931,7 @@
 				DEVELOPMENT_TEAM = 972KS36P2U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CrunchyGIF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -930,6 +959,7 @@
 				DEVELOPMENT_TEAM = 972KS36P2U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CrunchyGIF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1092,6 +1122,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshholtz.CrunchyGIF.SiriShortcut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

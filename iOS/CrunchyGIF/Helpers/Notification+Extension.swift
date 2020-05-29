@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static let GIFComplete = NSNotification.Name("GIFComplete")
+    static let ShareExtensionLoaded = NSNotification.Name("ShareExtensionLoaded")
 }

@@ -12,13 +12,9 @@ import MobileCoreServices
 import mobileffmpeg
 
 class IntentHandler: INExtension {
-    
     override func handler(for intent: INIntent) -> Any {
-        
-        
-        return self
+        return ConvertVideoIntentHandler()
     }
-    
 }
 
 class ConvertVideoIntentHandler: NSObject, ConvertVideoIntentHandling {
@@ -28,28 +24,33 @@ class ConvertVideoIntentHandler: NSObject, ConvertVideoIntentHandling {
             completion(ConvertVideoIntentResponse.init(code: ConvertVideoIntentResponseCode.failure, userActivity: nil))
             return
         }
+        
+        // Copy
+        let uuid = UUID().uuidString
+        let pathIn = FileManager.default.temporaryDirectory.appendingPathComponent("\(uuid).\(path.pathExtension)")
+    
+        do {
+            try file.data.write(to: pathIn)
+        } catch {
+            print("ERROR in write: \(error)")
+            completion(ConvertVideoIntentResponse.init(code: ConvertVideoIntentResponseCode.failure, userActivity: nil))
+            return
+        }
+        
+        print("AFTER COPY: \(pathIn)")
 
         // Path stuff
-        let fileNameAndExtension = path.lastPathComponent.replacingOccurrences(of: " ", with: "_")
-        let fileExtension = path.pathExtension
-        let fileName = fileNameAndExtension.replacingOccurrences(of: ".\(fileExtension)", with: "")
+//        let fileNameAndExtension = path.lastPathComponent.replacingOccurrences(of: " ", with: "_")
+//        let fileExtension = path.pathExtension
+//        let fileName = fileNameAndExtension.replacingOccurrences(of: ".\(fileExtension)", with: "")
 
-        let fileManager = FileManager.default
-        let tempUrl = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
-
-        let pathOut = tempUrl.appendingPathComponent(UUID().uuidString).appendingPathExtension("gif")
-        let pathIn = path
+        let pathOut = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("gif")
         
         // Filter
         let filter = "fps=\(10),scale=\(400):\(-1):flags=lanczos"
         
         // zip stuff
-        let cachesPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let tempPath = cachesPath.appendingPathComponent("tmp")
-        
-        try? FileManager.default.createDirectory(at: tempPath, withIntermediateDirectories: true, attributes: nil)
-
-        let paletteTemp = tempPath.appendingPathComponent("palette-\(UUID().uuidString).png")
+        let paletteTemp = FileManager.default.temporaryDirectory.appendingPathComponent("palette-\(UUID().uuidString).png")
         
         // https://cassidy.codes/blog/2017/04/25/ffmpeg-frames-to-gif-optimization/
         
@@ -75,11 +76,13 @@ class ConvertVideoIntentHandler: NSObject, ConvertVideoIntentHandling {
             pathOut.absoluteString
         ]
         
-//        let rc1 = MobileFFmpeg.execute(withArguments: argumentsPalette)
-//        let rc2 = MobileFFmpeg.execute(withArguments: argumentsWithPalette)
+        print("BEFORE EXECUTE")
         
-//        print("rc1: \(rc1)")
-//        print("rc2: \(rc2)")
+        let rc1 = MobileFFmpeg.execute(withArguments: argumentsPalette)
+        let rc2 = MobileFFmpeg.execute(withArguments: argumentsWithPalette)
+        
+        print("rc1: \(rc1)")
+        print("rc2: \(rc2)")
         
         // completion
         

@@ -25,23 +25,23 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>NSExtensionActivationRule</key>
-            <string>
+			<string>
                 SUBQUERY (
                     extensionItems,
                     $extensionItem,
                     SUBQUERY (
                         $extensionItem.attachments,
                         $attachment,
-                        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.file-url" ||
-                        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.movie"
+                        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO &quot;public.file-url&quot; ||
+                        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO &quot;public.movie&quot;
                     ).@count == $extensionItem.attachments.@count
                 ).@count &gt; 0
             </string>
 		</dict>
-		<key>NSExtensionMainStoryboard</key>
-		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>ShareHostingViewController</string>
 	</dict>
 </dict>
 </plist>

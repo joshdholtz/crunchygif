@@ -12,53 +12,81 @@ import AVFoundation
 import MobileCoreServices
 import SDWebImageSwiftUI
 
-private let gifQueue: OperationQueue = {
-    var queue = OperationQueue()
-    queue.name = "GIF queue"
-    return queue
-}()
-
 struct ContentView: View {
     
-    @State var gifFiles: [GifFile] = []
+    @State var prepareConvert: Bool = false
+    @State var preparedURLsLoading: Bool = false
+    @State var preparedURLs: [URL] = []
     
-    let dropDelegate = MyDropDelegate()
+    @State var gifFiles: [GifFile] = []
     
     let maxImageWidth: CGFloat = 400
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading) {
-                if !self.gifFiles.isEmpty {
-                    ScrollView {
-                        ForEach(self.gifFiles.chunked(into: max(Int(geometry.size.width / self.maxImageWidth), 1)).map({ (gifs) -> GifRow in
-                            return GifRow(gifs: gifs)
-                        })) { row in
-                            HStack {
-                                ForEach(row.gifs) { file in
-                                    Group {
-                                        AnimatedImage(url: file.url)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .contextMenu {
-                                                Button(action: {
-                                                    try? FileManager.default.removeItem(at: file.url)
-                                                    self.reloadImages()
-                                                }) {
-                                                    Text("Delete")
-                                                    Image(systemName: "x.circle.fill")
-                                                }
-                                            }
-                                    }.frame(minWidth: 100, maxWidth: self.maxImageWidth)
-                                        
-                                }
-                            }
-                            Divider()
-                        }
+            if !self.prepareConvert {
+                VStack(alignment: .leading) {
+                    if !self.gifFiles.isEmpty {
+                        ScrollView {
+                            ForEach(self.gifFiles.chunked(into: max(Int(geometry.size.width / self.maxImageWidth), 1)).map({ (gifs) -> GifRow in
+                                return GifRow(gifs: gifs)
+                            })) { row in
+                                HStack {
+                                    ForEach(row.gifs) { file in
+                                        Group {
+                                            AnimatedImage(url: file.url)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .background(Color.white)
+                                                .border(Color.white, width: 10)
+                                                .contextMenu {
+                                                    Button(action: {
+                                                        UIPasteboard.general.setData(try! Data(contentsOf: file.url), forPasteboardType: kUTTypeGIF as String)
+                                                    }) {
+                                                        Text("Copy")
+                                                        Image(systemName: "scissors")
+                                                    }
+                                                    Button(action: {
+                                                        try? FileManager.default.removeItem(at: file.url)
+                                                        self.reloadImages()
+                                                    }) {
+                                                        Text("Delete")
+                                                        Image(systemName: "x.circle.fill")
+                                                            .foregroundColor(Color.red)
+                                                    }
+                                            }.padding(10)
+                                        }.frame(minWidth: 100, maxWidth: self.maxImageWidth)
+                                        .onDrop(of: [kUTTypeMovie as String], delegate: self)
+                                            
+                                    }.onDrop(of: [kUTTypeMovie as String], delegate: self)
+                                }.onDrop(of: [kUTTypeMovie as String], delegate: self)
+                                Divider()
+                                .onDrop(of: [kUTTypeMovie as String], delegate: self)
+                            }.onDrop(of: [kUTTypeMovie as String], delegate: self)
+                        }.onDrop(of: [kUTTypeMovie as String], delegate: self)
+                    }
+                }.padding(20)
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    self.reloadImages()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: Notification.Name.GIFComplete)) { _ in
+//                    if gifQueue.operationCount == 0 {
+//                        self.reloadImages()
+//                    }
+                }
+                .onAppear() {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.reloadImages()
                     }
                 }
-            }.padding(20)
-        }
+            } else {
+                PrepareConvertView(loading: self.$preparedURLsLoading, urls: self.$preparedURLs) {
+                    self.prepareConvert = false
+                }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+            }
+        }.onDrop(of: [kUTTypeMovie as String], delegate: self)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image("PatternBackground")
@@ -66,21 +94,8 @@ struct ContentView: View {
                 .aspectRatio(contentMode: .fill)
                 .opacity(0.7)
                 .edgesIgnoringSafeArea(.all)
+            .onDrop(of: [kUTTypeMovie as String], delegate: self)
         )
-        .onDrop(of: [kUTTypeMovie as String], delegate: self.dropDelegate)
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            self.reloadImages()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name.GIFComplete)) { _ in
-            if gifQueue.operationCount == 0 {
-                self.reloadImages()
-            }
-        }
-        .onAppear() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.reloadImages()
-            }
-        }
     }
     
     func reloadImages() {
@@ -137,6 +152,34 @@ struct ContentView: View {
     }
 }
 
+class DraggableSource: NSObject {
+    let url: URL
+    
+    init(url: URL) {
+        self.url = url
+    }
+}
+
+extension DraggableSource: NSItemProviderWriting {
+    static var writableTypeIdentifiersForItemProvider: [String] {
+        return [kUTTypeGIF as String, kUTTypeURL as String]
+    }
+    
+    func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+        if typeIdentifier == kUTTypeGIF as String {
+            let data = try! Data(contentsOf: url)
+            completionHandler(data, nil)
+        } else if typeIdentifier == kUTTypeURL as String {
+            let data = try! Data(contentsOf: url)
+            completionHandler(data, nil)
+        }
+        
+        return nil
+    }
+    
+    
+}
+
 struct GifRow: Identifiable {
     let gifs: [GifFile]
     let id = UUID().uuidString
@@ -175,7 +218,8 @@ extension GifFile: Identifiable {
         return url.absoluteString
     }
 }
-struct MyDropDelegate: DropDelegate {
+
+extension ContentView: DropDelegate {
     func validateDrop(info: DropInfo) -> Bool {
         print("Validate drop")
         return info.hasItemsConforming(to: [kUTTypeMovie as String])
@@ -183,41 +227,57 @@ struct MyDropDelegate: DropDelegate {
     
     func dropEntered(info: DropInfo) {
         print("Drop entered")
+        self.preparedURLs = []
     }
     
     func performDrop(info: DropInfo) -> Bool {
         
         let itemProviders = info.itemProviders(for: [kUTTypeMovie as String])
+        let numberOfItems = itemProviders.count
+        var numberOfLoadedItems = 0
+        
+        if numberOfItems > 0 {
+            self.prepareConvert = true
+            self.preparedURLsLoading = true
+        }
+        
         for item in itemProviders {
             item.loadFileRepresentation(forTypeIdentifier: kUTTypeMovie as String) { (url, error) in
                 
                 if let url = url {
                     do {
                         let uuid = UUID().uuidString
-                        let tempUrl = FileManager.default.temporaryDirectory.appendingPathComponent("\(uuid)")
-                        try FileManager.default.moveItem(at: url, to: tempUrl)
                         
-                        let filter = "fps=\(10),scale=\(400):\(-1):flags=lanczos"
-                        let operation = GifOperation(path: tempUrl, filter: filter)
+//                        let cachePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+//                        let cachePath = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: url, create: false)
                         
-                        let doneOperation = BlockOperation {
-                            DispatchQueue.main.async {
-                                NotificationCenter.default.post(name: Notification.Name.GIFComplete, object: nil)
-                            }
+//                        let tempUrl = cachePath.appendingPathComponent("\(uuid)")
+                        let tempUrl = FileManager.default.temporaryDirectory.appendingPathComponent("\(uuid)").appendingPathExtension(url.pathExtension)
+                        try FileManager.default.copyItem(at: url, to: tempUrl)
+                        
+                        DispatchQueue.main.async {
+                            self.preparedURLs.append(tempUrl)
+                            numberOfLoadedItems = numberOfLoadedItems + 1
+                            self.preparedURLsLoading = (numberOfItems != numberOfLoadedItems)
                         }
-                        doneOperation.addDependency(operation)
-                        
-                        gifQueue.addOperations([operation, doneOperation], waitUntilFinished: false)
                     } catch {
                         print("ERROR: \(error)")
+                        DispatchQueue.main.async {
+                            numberOfLoadedItems = numberOfLoadedItems + 1
+                            self.preparedURLsLoading = (numberOfItems != numberOfLoadedItems)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        numberOfLoadedItems = numberOfLoadedItems + 1
+                        self.preparedURLsLoading = (numberOfItems != numberOfLoadedItems)
                     }
                 }
-                
             }
         }
 
+        print("Perform drop")
         return true
-
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
@@ -225,6 +285,7 @@ struct MyDropDelegate: DropDelegate {
     }
     
     func dropExited(info: DropInfo) {
-
+        print("Drop exited")
+        self.preparedURLs = []
     }
 }
