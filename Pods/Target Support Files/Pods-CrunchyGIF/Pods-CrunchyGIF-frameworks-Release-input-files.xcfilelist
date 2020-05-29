@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-CrunchyGIF/Pods-CrunchyGIF-frameworks.sh
+${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SDWebImageSwiftUI/SDWebImageSwiftUI.framework

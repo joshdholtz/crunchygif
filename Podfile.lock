@@ -1,0 +1,26 @@
+PODS:
+  - mobile-ffmpeg-full (4.3.2)
+  - SDWebImage (5.8.0):
+    - SDWebImage/Core (= 5.8.0)
+  - SDWebImage/Core (5.8.0)
+  - SDWebImageSwiftUI (1.4.0):
+    - SDWebImage (~> 5.7)
+
+DEPENDENCIES:
+  - mobile-ffmpeg-full (~> 4.3.2)
+  - SDWebImageSwiftUI
+
+SPEC REPOS:
+  trunk:
+    - mobile-ffmpeg-full
+    - SDWebImage
+    - SDWebImageSwiftUI
+
+SPEC CHECKSUMS:
+  mobile-ffmpeg-full: 5ff7bf33f70c7c89bba663e213f0d5a1ba8ddb84
+  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
+  SDWebImageSwiftUI: 034806fc7e19e0a36157fb8ecb9fc0437cc75230
+
+PODFILE CHECKSUM: 2f675518927bec61f60fd919a939801fe2c50f9e
+
+COCOAPODS: 1.9.1
