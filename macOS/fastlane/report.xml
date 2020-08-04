@@ -5,12 +5,32 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.012582">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.00087">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: prompt_bump_and_changelog" time="40.33844">
+      <testcase classname="fastlane.lanes" name="1: match" time="10.398575">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: fix_single_target_signing" time="0.000237">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: gym" time="23.201064">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: Switch to mac developer_id_app_path lane" time="0.000594">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: notarize" time="159.850351">
         
       </testcase>
     

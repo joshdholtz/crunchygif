@@ -12,7 +12,7 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ## Mac
@@ -41,6 +41,11 @@ Build for developer id and notarize
 fastlane mac clean
 ```
 Remove the build directory
+### mac meta
+```
+fastlane mac meta
+```
+Meta
 
 ----
 

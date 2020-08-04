@@ -125,7 +125,11 @@ class DashboardViewController: NSViewController {
         configureCollectionView()
         
         settingsButton.appearance = NSAppearance.current
-        settingsButton.contentTintColor = NSColor.lightGray
+        if #available(OSX 10.14, *) {
+            settingsButton.contentTintColor = NSColor.lightGray
+        } else {
+            // Fallback on earlier versions
+        }
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Settings", action: #selector(settings(_:)), keyEquivalent: "S"))
         menu.addItem(dockIconMenuItem)
