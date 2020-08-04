@@ -101,25 +101,4 @@ platform :mac do
     app_path = Dir.glob("../build/developerid/*.app").first
     File.absolute_path(app_path)
   end
-
-  desc "Meta"
-  lane :meta do
-    deliver(
-      force: true,
-
-      # languages: ["en-US"],
-      platform: "osx",
-
-      submit_for_review: false,
-
-      # release_notes: {
-      #   "en-US": "TESTING NOTES 1"
-      # },
-
-      skip_screenshots: true,
-      skip_metadata: false,
-      skip_app_version_update: true,
-      skip_binary_upload: true,
-    )
-  end
 end
