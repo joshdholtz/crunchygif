@@ -55,7 +55,19 @@ platform :mac do
       export_method: 'app-store',
     )
 
-    deliver
+    deliver(
+      submit_for_review: true,
+
+      submission_information: {
+        export_compliance_uses_encryption: false,
+        content_rights_contains_third_party_content: false,
+        add_id_info_limits_tracking: false,
+        add_id_info_serves_ads: false,
+        add_id_info_tracks_action: false,
+        add_id_info_tracks_install: false,
+        add_id_info_uses_idfa: false
+      },
+    )
   end
 
   desc "Build for developer id and notarize"
@@ -88,5 +100,26 @@ platform :mac do
   private_lane :developer_id_app_path do
     app_path = Dir.glob("../build/developerid/*.app").first
     File.absolute_path(app_path)
+  end
+
+  desc "Meta"
+  lane :meta do
+    deliver(
+      force: true,
+
+      # languages: ["en-US"],
+      platform: "osx",
+
+      submit_for_review: false,
+
+      # release_notes: {
+      #   "en-US": "TESTING NOTES 1"
+      # },
+
+      skip_screenshots: true,
+      skip_metadata: false,
+      skip_app_version_update: true,
+      skip_binary_upload: true,
+    )
   end
 end
