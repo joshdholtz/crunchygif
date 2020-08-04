@@ -41,11 +41,6 @@ Build for developer id and notarize
 fastlane mac clean
 ```
 Remove the build directory
-### mac meta
-```
-fastlane mac meta
-```
-Meta
 
 ----
 
